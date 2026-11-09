@@ -262,7 +262,7 @@ export const DetailPanel = memo(function DetailPanel({
   if (!tab) return <></>;
 
   // Calculate max height based on whether note editor is shown
-  const maxHeight = showNoteEditor || showReminderPicker ? 180 : 90;
+  const maxHeight = showNoteEditor || showReminderPicker ? 180 : 110;
 
   return (
     <AnimatePresence mode="wait">
