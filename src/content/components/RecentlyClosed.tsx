@@ -151,13 +151,14 @@ export const RecentlyClosed = memo(function RecentlyClosed({
   const isDark = isDarkTheme(settings.theme);
 
   return (
-    <CollapsibleSection
-      storageKey="recently_closed"
-      title="Recently Closed"
-      icon={<Clock className="w-3 h-3" strokeWidth={2} />}
-      count={entries.length}
-      variant="default"
-      defaultExpanded={false}
+    <div className="mt-2 shrink-0">
+      <CollapsibleSection
+        storageKey="recently_closed"
+        title="Recently Closed"
+        icon={<Clock className="w-3 h-3" strokeWidth={2} />}
+        count={entries.length}
+        variant="default"
+        defaultExpanded={false}
       isDark={isDark}
     >
       {/* Empty State */}
@@ -218,6 +219,7 @@ export const RecentlyClosed = memo(function RecentlyClosed({
         </div>
       )}
     </CollapsibleSection>
+    </div>
   );
 });
 
