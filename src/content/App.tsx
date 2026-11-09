@@ -426,23 +426,43 @@ function AppContent(): JSX.Element {
 
           {/* Scrollable Content Area */}
           <div className="flex-1 min-h-0 overflow-y-auto flex flex-col">
-            {/* Cleanup Panel (S1-3) */}
+            {/* Cleanup Panel (S1-3) - Pro Feature */}
             <AnimatePresence>
               {cleanupOpen && (
-                <CleanupPanel
-                  isOpen={cleanupOpen}
-                  onClose={() => setCleanupOpen(false)}
-                />
+                isPro ? (
+                  <CleanupPanel
+                    isOpen={cleanupOpen}
+                    onClose={() => setCleanupOpen(false)}
+                  />
+                ) : (
+                  <ProGate
+                    featureName="Smart Cleanup"
+                    description="One-click optimization to close duplicates, sleep idle tabs, and manage heavy memory users."
+                    variant="overlay"
+                    className="m-3"
+                    onClose={() => setCleanupOpen(false)}
+                  />
+                )
               )}
             </AnimatePresence>
 
-            {/* Duplicates Panel (S1-5) */}
+            {/* Duplicates Panel (S1-5) - Pro Feature */}
             <AnimatePresence>
               {duplicatesOpen && (
-                <DuplicatesPanel
-                  isOpen={duplicatesOpen}
-                  onClose={() => setDuplicatesOpen(false)}
-                />
+                isPro ? (
+                  <DuplicatesPanel
+                    isOpen={duplicatesOpen}
+                    onClose={() => setDuplicatesOpen(false)}
+                  />
+                ) : (
+                  <ProGate
+                    featureName="Smart Duplicate Detection"
+                    description="Find and merge duplicate tabs with smart URL matching that ignores tracking parameters."
+                    variant="overlay"
+                    className="m-3"
+                    onClose={() => setDuplicatesOpen(false)}
+                  />
+                )
               )}
             </AnimatePresence>
 

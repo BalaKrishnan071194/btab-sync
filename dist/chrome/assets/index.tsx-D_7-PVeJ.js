@@ -1,4 +1,4 @@
-import{c as u,j as s,r as m,A as p,a as h}from"./index-BSCXctDa.js";import"./index-DlH6VUci.js";import"./license-D_A-yaqw.js";const r="btab-sync-root",w="btab-sync-shadow-host",t={shadowHost:null,shadowRoot:null,reactRoot:null,isInitialized:!1,currentPayload:null};function y(){return h}function f(){const e=document.getElementById(r);e&&e.remove();const o=document.createElement("div");o.id=r,o.className=w,o.style.cssText=`
+import{c as u,j as s,r as m,A as p,a as h}from"./index-DgrDbvo7.js";import"./license-DpvaK0fl.js";const r="btab-sync-root",w="btab-sync-shadow-host",t={shadowHost:null,shadowRoot:null,reactRoot:null,isInitialized:!1,currentPayload:null};function y(){return h}function f(){const e=document.getElementById(r);e&&e.remove();const o=document.createElement("div");o.id=r,o.className=w,o.style.cssText=`
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;

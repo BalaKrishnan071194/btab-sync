@@ -35,7 +35,7 @@
   "content_scripts": [
     {
       "js": [
-        "assets/index.tsx-loader-BXgDfSuC.js"
+        "assets/index.tsx-loader-C_SfzZ7K.js"
       ],
       "matches": [
         "<all_urls>"
@@ -60,10 +60,9 @@
       "resources": [
         "assets/*",
         "icons/*",
-        "assets/index-BSCXctDa.js",
-        "assets/index-DlH6VUci.js",
-        "assets/license-D_A-yaqw.js",
-        "assets/index.tsx-CippWihl.js"
+        "assets/index-DgrDbvo7.js",
+        "assets/license-DpvaK0fl.js",
+        "assets/index.tsx-D_7-PVeJ.js"
       ],
       "use_dynamic_url": false
     }

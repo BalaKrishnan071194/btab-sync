@@ -8,7 +8,7 @@
  */
 
 import { memo, useMemo } from 'react';
-import { Moon, Sun, Eye, EyeOff, Pin, X, Focus, Trash2, Copy } from 'lucide-react';
+import { Moon, Sun, Eye, EyeOff, Pin, X, Focus, Trash2, Copy, Crown } from 'lucide-react';
 import { useBTab, useTabs, useSettings, useFocusMode, useIsPro, isDarkTheme } from '../BTabContext';
 import { Button } from '../ui/button';
 import { cn } from '../ui/cn';
@@ -186,7 +186,7 @@ export const Header = memo(function Header({
 
       {/* Right Actions - always visible */}
       <div className="ml-auto flex items-center gap-0.5 shrink-0">
-        {/* S1-5: Duplicates Button with Badge */}
+        {/* S1-5: Duplicates Button with Badge - Pro Feature */}
         <div className="relative">
           <Button
             variant="ghost"
@@ -200,12 +200,16 @@ export const Header = memo(function Header({
                 : 'text-[#64748b] hover:bg-black/[0.03] hover:text-[#0e1226] hover:border-black/[0.1]'
             )}
             onClick={onDuplicatesToggle}
-            title="Duplicate Tabs"
+            title="Duplicate Tabs (Pro)"
           >
             <Copy className="w-3 h-3" />
           </Button>
-          {/* S1-5: Duplicate count badge */}
-          {duplicateCount > 0 && (
+          {/* Pro crown badge when not Pro */}
+          {!isPro && (
+            <Crown className="w-2 h-2 absolute -top-0.5 -right-0.5 text-[#f9e2af]" />
+          )}
+          {/* S1-5: Duplicate count badge - only show for Pro users */}
+          {isPro && duplicateCount > 0 && (
             <span
               className={cn(
                 'absolute -top-1 -right-1 min-w-[14px] h-3.5 px-0.5 rounded-full',
@@ -218,23 +222,29 @@ export const Header = memo(function Header({
           )}
         </div>
 
-        {/* S1-3: Cleanup Button */}
-        <Button
-          variant="ghost"
-          size="icon"
-          className={cn(
-            'w-6 h-6 rounded-md border border-transparent',
-            'transition-all duration-150',
-            cleanupOpen && 'text-[#1dd9b4] bg-[rgba(29,217,180,0.12)] border-[rgba(29,217,180,0.28)]',
-            !cleanupOpen && isDark
-              ? 'text-[#64748b] hover:bg-white/[0.05] hover:text-[#edf0ff] hover:border-white/[0.12]'
-              : 'text-[#64748b] hover:bg-black/[0.03] hover:text-[#0e1226] hover:border-black/[0.1]'
+        {/* S1-3: Cleanup Button - Pro Feature */}
+        <div className="relative">
+          <Button
+            variant="ghost"
+            size="icon"
+            className={cn(
+              'w-6 h-6 rounded-md border border-transparent',
+              'transition-all duration-150',
+              cleanupOpen && 'text-[#1dd9b4] bg-[rgba(29,217,180,0.12)] border-[rgba(29,217,180,0.28)]',
+              !cleanupOpen && isDark
+                ? 'text-[#64748b] hover:bg-white/[0.05] hover:text-[#edf0ff] hover:border-white/[0.12]'
+                : 'text-[#64748b] hover:bg-black/[0.03] hover:text-[#0e1226] hover:border-black/[0.1]'
+            )}
+            onClick={onCleanupToggle}
+            title="Quick Cleanup (Pro)"
+          >
+            <Trash2 className="w-3 h-3" />
+          </Button>
+          {/* Pro crown badge when not Pro */}
+          {!isPro && (
+            <Crown className="w-2 h-2 absolute -top-0.5 -right-0.5 text-[#f9e2af]" />
           )}
-          onClick={onCleanupToggle}
-          title="Quick Cleanup"
-        >
-          <Trash2 className="w-3 h-3" />
-        </Button>
+        </div>
 
         {/* S1-4: Focus Mode Button */}
         <Button
