@@ -20,6 +20,7 @@ let detectedBrowser: BrowserType | null = null;
 
 /**
  * Detects the current browser environment
+ * Note: Uses only APIs available in service workers.
  */
 function detectBrowser(): BrowserType {
   if (detectedBrowser) return detectedBrowser;
@@ -30,14 +31,15 @@ function detectBrowser(): BrowserType {
     'browser' in globalThis &&
     typeof (globalThis as { browser?: { runtime?: unknown } }).browser?.runtime !== 'undefined'
   ) {
-    if (typeof navigator !== 'undefined' && /Firefox/i.test(navigator.userAgent)) {
+    // Only check userAgent if navigator is available
+    if (typeof navigator !== 'undefined' && /Firefox/i.test(navigator.userAgent || '')) {
       detectedBrowser = 'firefox';
       return 'firefox';
     }
   }
 
-  // Check for Edge
-  if (typeof navigator !== 'undefined' && /Edg\//i.test(navigator.userAgent)) {
+  // Check for Edge (only if navigator is available)
+  if (typeof navigator !== 'undefined' && /Edg\//i.test(navigator.userAgent || '')) {
     detectedBrowser = 'edge';
     return 'edge';
   }

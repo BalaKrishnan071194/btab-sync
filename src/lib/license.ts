@@ -77,18 +77,32 @@ const LEMONSQUEEZY_API = 'https://api.lemonsqueezy.com/v1/licenses';
 /**
  * Generate a unique device fingerprint based on browser characteristics.
  * Same device = same fingerprint (deterministic).
+ * Note: Uses only APIs available in service workers (no DOM/screen access).
  */
 async function getDeviceFingerprint(): Promise<string> {
-  const data = [
-    navigator.userAgent,
-    navigator.language,
-    navigator.languages?.join(',') || '',
-    screen.width + 'x' + screen.height + 'x' + screen.colorDepth,
-    new Date().getTimezoneOffset().toString(),
-    navigator.hardwareConcurrency?.toString() || '0',
-    // Add platform if available
-    navigator.platform || '',
-  ].join('|');
+  // Build fingerprint from service worker-safe APIs only
+  const parts: string[] = [];
+  
+  // Navigator properties available in service workers
+  if (typeof navigator !== 'undefined') {
+    parts.push(navigator.userAgent || '');
+    parts.push(navigator.language || '');
+    parts.push(navigator.languages?.join(',') || '');
+    parts.push(navigator.hardwareConcurrency?.toString() || '0');
+  }
+  
+  // Timezone offset is available everywhere
+  parts.push(new Date().getTimezoneOffset().toString());
+  
+  // Extension ID provides uniqueness per browser profile
+  try {
+    const extensionId = chrome.runtime?.id || '';
+    parts.push(extensionId);
+  } catch {
+    // Ignore if not in extension context
+  }
+  
+  const data = parts.join('|');
 
   // Hash the fingerprint using Web Crypto API
   const encoder = new TextEncoder();
@@ -99,9 +113,15 @@ async function getDeviceFingerprint(): Promise<string> {
 
 /**
  * Generate a human-readable device name
+ * Note: Uses only APIs available in service workers.
  */
 function getDeviceName(): string {
-  const ua = navigator.userAgent;
+  // Check if navigator is available (should be in service workers)
+  if (typeof navigator === 'undefined') {
+    return 'Browser';
+  }
+  
+  const ua = navigator.userAgent || '';
   let browser = 'Browser';
   let os = 'Unknown';
 
