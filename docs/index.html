@@ -526,6 +526,133 @@
     .animate-float {
       animation: float 3s ease-in-out infinite;
     }
+
+    /* Pricing Toggle */
+    .pricing-toggle {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+      background: var(--bg);
+      padding: 0.5rem;
+      border-radius: 12px;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .toggle-btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      background: transparent;
+      color: var(--text-muted);
+      transition: all 0.2s;
+    }
+
+    .toggle-btn:hover {
+      color: var(--text);
+    }
+
+    .toggle-btn.active {
+      background: var(--teal);
+      color: var(--bg);
+    }
+
+    .save-badge {
+      font-size: 0.7rem;
+      background: rgba(158, 206, 106, 0.2);
+      color: var(--green);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      margin-left: 0.5rem;
+    }
+
+    .toggle-btn.active .save-badge {
+      background: rgba(8, 10, 22, 0.2);
+      color: var(--bg);
+    }
+
+    /* Feature Request Section */
+    .feature-request {
+      padding: 6rem 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .request-container {
+      text-align: center;
+    }
+
+    .request-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .request-card {
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.3s;
+      display: block;
+    }
+
+    .request-card:hover {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: var(--teal);
+      transform: translateY(-4px);
+    }
+
+    .request-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .request-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+
+    .request-card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .roadmap-link {
+      margin-top: 2.5rem;
+      padding: 1.5rem;
+      background: rgba(29, 217, 180, 0.05);
+      border: 1px solid rgba(29, 217, 180, 0.1);
+      border-radius: 12px;
+    }
+
+    .roadmap-link p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    .roadmap-link a {
+      color: var(--teal);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .roadmap-link a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -542,7 +669,8 @@
       <div class="nav-links">
         <a href="#features">Features</a>
         <a href="#pricing">Pricing</a>
-        <a href="https://github.com/user/btab-switcher" target="_blank">GitHub</a>
+        <a href="#request">Request Feature</a>
+        <a href="https://github.com/BalaKrishnan071194/btab-sync" target="_blank">GitHub</a>
         <a href="#pricing" class="btn btn-primary">Get Pro</a>
       </div>
     </div>
@@ -657,6 +785,13 @@
         <p>Start free, upgrade when you need more power</p>
       </div>
       
+      <!-- Pricing Toggle -->
+      <div class="pricing-toggle">
+        <button class="toggle-btn active" data-plan="monthly">Monthly</button>
+        <button class="toggle-btn" data-plan="yearly">Yearly <span class="save-badge">Save 33%</span></button>
+        <button class="toggle-btn" data-plan="lifetime">Lifetime</button>
+      </div>
+      
       <div class="pricing-cards">
         <div class="pricing-card">
           <div class="pricing-tier">Free</div>
@@ -675,8 +810,8 @@
         
         <div class="pricing-card featured">
           <div class="pricing-tier">Pro</div>
-          <div class="pricing-price">$29 <span>one-time</span></div>
-          <div class="pricing-desc">For power users who live in their browser</div>
+          <div class="pricing-price" id="pro-price">$3 <span>/month</span></div>
+          <div class="pricing-desc" id="pro-desc">Billed monthly, cancel anytime</div>
           <ul class="pricing-features">
             <li>Everything in Free</li>
             <li>Smart duplicate detection</li>
@@ -685,10 +820,44 @@
             <li>Tab workspaces</li>
             <li>Time machine (30-day history)</li>
             <li>Automation rules</li>
-            <li>Lifetime license, 3 devices</li>
+            <li id="pro-devices">Use on 3 devices</li>
           </ul>
-          <a href="https://btabsync.lemonsqueezy.com" class="btn btn-primary" target="_blank">Get Pro License</a>
+          <a href="https://btabsync.lemonsqueezy.com/checkout/buy/monthly" class="btn btn-primary" id="pro-btn" target="_blank">Get Pro License</a>
         </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Feature Request Section -->
+  <section class="feature-request" id="request">
+    <div class="request-container">
+      <div class="section-header">
+        <h2>💡 Request a Feature</h2>
+        <p>Have an idea that would make bTab Sync better? We'd love to hear it!</p>
+      </div>
+      
+      <div class="request-options">
+        <a href="https://github.com/BalaKrishnan071194/btab-sync/issues/new?template=feature_request.md&title=[Feature]%20" class="request-card" target="_blank">
+          <div class="request-icon">📝</div>
+          <h3>GitHub Issue</h3>
+          <p>Create a detailed feature request on GitHub. Best for technical suggestions.</p>
+        </a>
+        
+        <a href="https://github.com/BalaKrishnan071194/btab-sync/discussions/new?category=ideas" class="request-card" target="_blank">
+          <div class="request-icon">💬</div>
+          <h3>Discussions</h3>
+          <p>Start a discussion to brainstorm ideas with the community.</p>
+        </a>
+        
+        <a href="mailto:support@btabsync.com?subject=Feature%20Request:%20" class="request-card">
+          <div class="request-icon">📧</div>
+          <h3>Email Us</h3>
+          <p>Send us an email directly. We read and respond to every message.</p>
+        </a>
+      </div>
+      
+      <div class="roadmap-link">
+        <p>Check our <a href="https://github.com/BalaKrishnan071194/btab-sync/projects/1" target="_blank">public roadmap</a> to see what's coming next →</p>
       </div>
     </div>
   </section>
@@ -732,15 +901,39 @@
   <footer>
     <div class="footer-content">
       <div class="footer-links">
-        <a href="https://github.com/user/btab-switcher">GitHub</a>
+        <a href="https://github.com/BalaKrishnan071194/btab-sync">GitHub</a>
         <a href="privacy.html">Privacy Policy</a>
+        <a href="#request">Request Feature</a>
         <a href="mailto:support@btabsync.com">Support</a>
-        <a href="https://twitter.com/btabsync">Twitter</a>
       </div>
       <p class="footer-copy">
         © 2024 bTab Sync. Made with ☕ for power users everywhere.
       </p>
     </div>
   </footer>
+
+  <script>
+    // Pricing toggle functionality
+    const pricingData = {
+      monthly: { price: '$3', period: '/month', desc: 'Billed monthly, cancel anytime', devices: 'Use on 3 devices', url: 'https://btabsync.lemonsqueezy.com/checkout/buy/monthly' },
+      yearly: { price: '$24', period: '/year', desc: 'Billed yearly, save 33%', devices: 'Use on 3 devices', url: 'https://btabsync.lemonsqueezy.com/checkout/buy/yearly' },
+      lifetime: { price: '$49', period: ' one-time', desc: 'Pay once, use forever', devices: 'Lifetime license, 3 devices', url: 'https://btabsync.lemonsqueezy.com/checkout/buy/lifetime' }
+    };
+
+    document.querySelectorAll('.toggle-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        const plan = btn.dataset.plan;
+        const data = pricingData[plan];
+        
+        document.getElementById('pro-price').innerHTML = `${data.price} <span>${data.period}</span>`;
+        document.getElementById('pro-desc').textContent = data.desc;
+        document.getElementById('pro-devices').textContent = data.devices;
+        document.getElementById('pro-btn').href = data.url;
+      });
+    });
+  </script>
 </body>
 </html>
