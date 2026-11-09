@@ -301,7 +301,7 @@ const StatusPill = memo(function StatusPill({
     );
   }
 
-  // Frozen/Discarded
+  // Frozen/Discarded - just icon, no text
   if (tab.discarded) {
     return (
       <span 
@@ -309,7 +309,6 @@ const StatusPill = memo(function StatusPill({
         title="Frozen - Memory saved"
       >
         <Snowflake className="w-3 h-3 shrink-0" strokeWidth={2.5} />
-        <span>ZZZ</span>
       </span>
     );
   }

@@ -126,7 +126,7 @@ export function Panel({ children }: PanelProps): React.JSX.Element {
             aria-label="bTab Sync - Tab Switcher"
             data-btab-theme={settings.theme}
             className={cn(
-              'fixed w-[420px] max-h-[calc(100vh-24px)]',
+              'fixed w-[420px]',
               'rounded-2xl overflow-hidden pointer-events-auto',
               'flex flex-col font-sans',
               'border shadow-2xl',
@@ -146,6 +146,7 @@ export function Panel({ children }: PanelProps): React.JSX.Element {
               top: '12px',
               right: '12px',
               minHeight: '450px',
+              maxHeight: 'calc(100vh - 24px)',
             }}
             variants={panelVariants}
             initial="hidden"
