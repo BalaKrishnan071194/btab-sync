@@ -240,6 +240,23 @@ function estimateMemoryMB(tab: chrome.tabs.Tab, idleDurationMs: number): number 
 }
 
 /**
+ * Check if URL is an internal/special URL that shouldn't be considered for duplicates
+ */
+function isInternalUrl(url: string): boolean {
+  return (
+    url.startsWith('chrome://') ||
+    url.startsWith('chrome-extension://') ||
+    url.startsWith('moz-extension://') ||
+    url.startsWith('about:') ||
+    url.startsWith('edge://') ||
+    url.startsWith('file://') ||
+    url.startsWith('devtools://') ||
+    url === '' ||
+    url === 'about:blank'
+  );
+}
+
+/**
  * Normalize URL for duplicate detection (strips hash, trailing slash)
  */
 function normalizeUrl(url: string): string {
@@ -830,8 +847,13 @@ async function buildPayload(): Promise<TabPayload> {
   
   for (const t of allTabs) {
     if (t.id != null) {
-      const norm = normalizeUrl(t.url || '');
-      const smartNorm = normalizeUrlSmart(t.url || '');
+      const url = t.url || '';
+      
+      // Skip internal URLs from duplicate detection
+      if (isInternalUrl(url)) continue;
+      
+      const norm = normalizeUrl(url);
+      const smartNorm = normalizeUrlSmart(url);
       
       if (!urlGroups[norm]) urlGroups[norm] = [];
       urlGroups[norm].push(t.id);
