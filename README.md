@@ -11,6 +11,25 @@ A premium, local-first, cross-browser extension for power users who manage many 
 
 ---
 
+## 📸 Screenshots
+
+<p align="center">
+  <img src="docs/screenshots/main-panel-dark.png" alt="bTab Sync Main Panel" width="400">
+</p>
+
+<p align="center">
+  <em>Clean, elegant tab management panel with memory badges and status indicators</em>
+</p>
+
+### Search & Focus Mode
+
+| Smart Search | Focus Mode |
+|:---:|:---:|
+| ![Search](docs/screenshots/search-feature.png) | ![Focus](docs/screenshots/focus-mode.png) |
+| Multi-word search with highlighting | Filter to current window tabs |
+
+---
+
 ## ✨ Features
 
 ### 🆓 Free Features
