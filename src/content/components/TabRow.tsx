@@ -285,15 +285,18 @@ const StatusPill = memo(function StatusPill({
   tab,
   isDark,
 }: StatusPillProps): React.JSX.Element | null {
+  // Base classes for all status pills - consistent sizing with MemoryBadge
+  const baseClasses = 'inline-flex items-center gap-1 px-1.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider leading-none whitespace-nowrap border';
+  
   // Pinned
   if (tab.pinned) {
     return (
       <span 
-        className="flex items-center gap-1 px-1.5 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-wider bg-[rgba(249,226,175,0.12)] text-[#f9e2af] border border-[rgba(249,226,175,0.25)]"
+        className={cn(baseClasses, 'bg-[rgba(249,226,175,0.12)] text-[#f9e2af] border-[rgba(249,226,175,0.25)]')}
         title="Pinned"
       >
-        <Pin className="w-2.5 h-2.5" strokeWidth={2.5} />
-        PIN
+        <Pin className="w-3 h-3 shrink-0" strokeWidth={2.5} />
+        <span>PIN</span>
       </span>
     );
   }
@@ -302,11 +305,11 @@ const StatusPill = memo(function StatusPill({
   if (tab.discarded) {
     return (
       <span 
-        className="flex items-center gap-1 px-1.5 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-wider bg-[rgba(122,162,247,0.12)] text-[#7aa2f7] border border-[rgba(122,162,247,0.25)]"
+        className={cn(baseClasses, 'bg-[rgba(122,162,247,0.12)] text-[#7aa2f7] border-[rgba(122,162,247,0.25)]')}
         title="Frozen - Memory saved"
       >
-        <Snowflake className="w-2.5 h-2.5" strokeWidth={2.5} />
-        ZZZ
+        <Snowflake className="w-3 h-3 shrink-0" strokeWidth={2.5} />
+        <span>ZZZ</span>
       </span>
     );
   }
@@ -315,11 +318,11 @@ const StatusPill = memo(function StatusPill({
   if (tab.isDuplicate) {
     return (
       <span 
-        className="flex items-center gap-1 px-1.5 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-wider bg-[rgba(247,118,142,0.12)] text-[#f7768e] border border-[rgba(247,118,142,0.25)]"
+        className={cn(baseClasses, 'bg-[rgba(247,118,142,0.12)] text-[#f7768e] border-[rgba(247,118,142,0.25)]')}
         title="Duplicate tab"
       >
-        <Link2 className="w-2.5 h-2.5" strokeWidth={2.5} />
-        DUP
+        <Link2 className="w-3 h-3 shrink-0" strokeWidth={2.5} />
+        <span>DUP</span>
       </span>
     );
   }
@@ -328,11 +331,11 @@ const StatusPill = memo(function StatusPill({
   if (tab.isStale) {
     return (
       <span 
-        className="flex items-center gap-1 px-1.5 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-wider bg-[rgba(255,158,100,0.12)] text-[#ff9e64] border border-[rgba(255,158,100,0.25)]"
+        className={cn(baseClasses, 'bg-[rgba(255,158,100,0.12)] text-[#ff9e64] border-[rgba(255,158,100,0.25)]')}
         title={tab.idleLabel || 'Idle'}
       >
-        <Moon className="w-2.5 h-2.5" strokeWidth={2.5} />
-        {tab.idleLabel?.replace(' ago', '') || 'IDLE'}
+        <Moon className="w-3 h-3 shrink-0" strokeWidth={2.5} />
+        <span>{tab.idleLabel?.replace(' ago', '').replace('idle ', '') || 'IDLE'}</span>
       </span>
     );
   }
@@ -341,11 +344,11 @@ const StatusPill = memo(function StatusPill({
   if (tab.active) {
     return (
       <span 
-        className="flex items-center gap-1 px-1.5 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-wider bg-[rgba(34,197,94,0.12)] text-[#22c55e] border border-[rgba(34,197,94,0.25)]"
+        className={cn(baseClasses, 'bg-[rgba(34,197,94,0.12)] text-[#22c55e] border-[rgba(34,197,94,0.25)]')}
         title="Active tab"
       >
-        <Play className="w-2.5 h-2.5" strokeWidth={2.5} fill="currentColor" />
-        NOW
+        <Play className="w-3 h-3 shrink-0" strokeWidth={2.5} fill="currentColor" />
+        <span>NOW</span>
       </span>
     );
   }
