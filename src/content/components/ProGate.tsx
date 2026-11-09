@@ -7,7 +7,7 @@
 
 import { memo, useCallback } from 'react';
 import { motion } from 'framer-motion';
-import { Lock, Crown, Sparkles, ExternalLink } from 'lucide-react';
+import { Lock, Crown, Sparkles, ExternalLink, X } from 'lucide-react';
 import { Button } from '../ui/button';
 import { useSettings, useIsPro, isDarkTheme } from '../BTabContext';
 import { ext } from '@/lib/browsers';
@@ -24,6 +24,8 @@ interface ProGateProps {
   readonly description?: string;
   /** Callback when upgrade button is clicked */
   readonly onUpgrade?: () => void;
+  /** Callback when close/back button is clicked */
+  readonly onClose?: () => void;
   /** Whether the gate is inline (smaller) or full overlay */
   readonly variant?: 'inline' | 'overlay' | 'card';
   /** Custom class name */
@@ -44,6 +46,7 @@ export const ProGate = memo(function ProGate({
   featureName,
   description,
   onUpgrade,
+  onClose,
   variant = 'card',
   className,
 }: ProGateProps): React.JSX.Element {
@@ -104,6 +107,23 @@ export const ProGate = memo(function ProGate({
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
       >
+        {/* Close button */}
+        {onClose && (
+          <button
+            type="button"
+            onClick={onClose}
+            className={cn(
+              'absolute top-3 right-3 p-1.5 rounded-lg transition-colors',
+              isDark
+                ? 'text-[#8b94b2] hover:text-[#edf0ff] hover:bg-[rgba(255,255,255,0.05)]'
+                : 'text-[#8890ab] hover:text-[#0e1226] hover:bg-[rgba(0,0,0,0.05)]'
+            )}
+            aria-label="Close"
+          >
+            <X className="w-5 h-5" strokeWidth={2} />
+          </button>
+        )}
+
         <div className="flex flex-col items-center gap-3 p-6">
           {/* Lock Icon */}
           <div
@@ -144,6 +164,22 @@ export const ProGate = memo(function ProGate({
             <Sparkles className="w-4 h-4 mr-2" strokeWidth={2} />
             Unlock with Pro
           </Button>
+
+          {/* Maybe Later / Back link */}
+          {onClose && (
+            <button
+              type="button"
+              onClick={onClose}
+              className={cn(
+                'text-xs transition-colors',
+                isDark
+                  ? 'text-[#4e5578] hover:text-[#8b94b2]'
+                  : 'text-[#8890ab] hover:text-[#444d6e]'
+              )}
+            >
+              Maybe later
+            </button>
+          )}
         </div>
       </motion.div>
     );

@@ -460,6 +460,7 @@ function AppContent(): JSX.Element {
                     description="View detailed memory usage per tab with visual charts and optimization suggestions."
                     variant="overlay"
                     className="m-3"
+                    onClose={() => setMemoryOpen(false)}
                   />
                 )
               )}
@@ -479,6 +480,7 @@ function AppContent(): JSX.Element {
                     description="Save and restore tab collections. Create named project workspaces with emoji and color."
                     variant="overlay"
                     className="m-3"
+                    onClose={() => setWorkspacesOpen(false)}
                   />
                 )
               )}
@@ -498,6 +500,7 @@ function AppContent(): JSX.Element {
                     description="Access your last 100 closed tabs with 30-day history, grouped by date."
                     variant="overlay"
                     className="m-3"
+                    onClose={() => setTimeMachineOpen(false)}
                   />
                 )
               )}
