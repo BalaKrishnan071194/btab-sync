@@ -269,7 +269,7 @@ export const DetailPanel = memo(function DetailPanel({
       {isOpen && (
         <motion.div
           className={cn(
-            'overflow-hidden rounded-b-[9px] -mt-0.5 mb-1 border-l-[3px]',
+            'rounded-b-[9px] -mt-0.5 mb-1 border-l-[3px]',
             isDark ? 'bg-[rgba(16,20,36,0.95)]' : 'bg-[rgba(248,250,252,1)]',
             getBorderClass(tab)
           )}
