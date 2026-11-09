@@ -256,7 +256,7 @@ const MemoryBadge = memo(function MemoryBadge({
   return (
     <span
       className={cn(
-        'inline-flex items-center gap-1 px-1.5 py-1 rounded-md',
+        'inline-flex items-center gap-1 px-1.5 py-1 rounded-md shrink-0',
         'text-[11px] font-bold tabular-nums leading-none whitespace-nowrap',
         'border transition-colors duration-150'
       )}
@@ -267,7 +267,7 @@ const MemoryBadge = memo(function MemoryBadge({
       }}
     >
       <Icon className="w-3 h-3 shrink-0" strokeWidth={2.5} />
-      <span>{mb}</span>
+      <span className="shrink-0">{mb}</span>
     </span>
   );
 });
