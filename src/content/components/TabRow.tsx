@@ -242,8 +242,8 @@ const MemoryBadge = memo(function MemoryBadge({
   isDark,
 }: MemoryBadgeProps): React.JSX.Element {
   const tier = getMemoryTier(mb);
-  // Use Moon icon for sleeping/discarded tabs, Cpu for active tabs
-  const Icon = discarded ? Moon : Cpu;
+  // Always use Cpu icon for memory badge (regardless of frozen/active state)
+  const Icon = Cpu;
 
   const colors = {
     lo: { bg: 'rgba(34,197,94,0.1)', border: 'rgba(34,197,94,0.2)', text: '#22c55e' },
