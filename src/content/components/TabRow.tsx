@@ -518,7 +518,7 @@ export const TabRow = memo(function TabRow({
               'transition-all duration-150',
               isDark
                 ? 'text-[#8b94b2] bg-white/[0.03] hover:bg-[rgba(29,217,180,0.12)] hover:text-[#1dd9b4] ring-1 ring-white/[0.06]'
-                : 'text-[#444d6e] bg-black/[0.02] hover:bg-[rgba(20,184,150,0.1)] hover:text-[#14b896] ring-1 ring-black/[0.04]'
+                : 'text-[#64748b] bg-black/[0.04] hover:bg-[rgba(20,184,150,0.15)] hover:text-[#0d9488] ring-1 ring-black/[0.12]'
             )}
             onClick={(e) => {
               e.stopPropagation();
@@ -540,7 +540,7 @@ export const TabRow = memo(function TabRow({
               'transition-all duration-150',
               isDark
                 ? 'text-[#8b94b2] bg-white/[0.03] hover:bg-[rgba(255,158,100,0.12)] hover:text-[#ff9e64] ring-1 ring-white/[0.06]'
-                : 'text-[#444d6e] bg-black/[0.02] hover:bg-[rgba(192,64,0,0.1)] hover:text-[#c04000] ring-1 ring-black/[0.04]'
+                : 'text-[#64748b] bg-black/[0.04] hover:bg-[rgba(234,88,12,0.15)] hover:text-[#ea580c] ring-1 ring-black/[0.12]'
             )}
             onClick={(e) => {
               e.stopPropagation();
@@ -563,10 +563,10 @@ export const TabRow = memo(function TabRow({
               tab.pinned
                 ? isDark
                   ? 'text-[#f9e2af] bg-[rgba(249,226,175,0.08)] hover:bg-[rgba(249,226,175,0.15)] ring-1 ring-[rgba(249,226,175,0.2)]'
-                  : 'text-[#c9a227] bg-[rgba(249,226,175,0.12)] hover:bg-[rgba(249,226,175,0.2)] ring-1 ring-[rgba(249,226,175,0.3)]'
+                  : 'text-[#b45309] bg-[rgba(251,191,36,0.15)] hover:bg-[rgba(251,191,36,0.25)] ring-1 ring-[rgba(251,191,36,0.4)]'
                 : isDark
                   ? 'text-[#8b94b2] bg-white/[0.03] hover:bg-[rgba(249,226,175,0.12)] hover:text-[#f9e2af] ring-1 ring-white/[0.06]'
-                  : 'text-[#444d6e] bg-black/[0.02] hover:bg-[rgba(249,226,175,0.15)] hover:text-[#c9a227] ring-1 ring-black/[0.04]'
+                  : 'text-[#64748b] bg-black/[0.04] hover:bg-[rgba(251,191,36,0.15)] hover:text-[#b45309] ring-1 ring-black/[0.12]'
             )}
             onClick={(e) => {
               e.stopPropagation();
@@ -600,8 +600,9 @@ export const TabRow = memo(function TabRow({
           <span 
             className={cn(
               'flex items-center justify-center w-7 h-7 rounded-lg',
-              'bg-[rgba(249,226,175,0.08)] ring-1 ring-[rgba(249,226,175,0.2)]',
-              isDark ? 'text-[#f9e2af]' : 'text-[#c9a227]'
+              isDark 
+                ? 'bg-[rgba(249,226,175,0.08)] ring-1 ring-[rgba(249,226,175,0.2)] text-[#f9e2af]'
+                : 'bg-[rgba(251,191,36,0.15)] ring-1 ring-[rgba(251,191,36,0.4)] text-[#b45309]'
             )}
             title="Pinned tab (protected)"
           >
@@ -616,7 +617,7 @@ export const TabRow = memo(function TabRow({
               'transition-all duration-150',
               isDark
                 ? 'text-[#8b94b2] bg-white/[0.03] hover:bg-[rgba(247,118,142,0.12)] hover:text-[#f7768e] ring-1 ring-white/[0.06]'
-                : 'text-[#444d6e] bg-black/[0.02] hover:bg-[rgba(192,32,64,0.1)] hover:text-[#c02040] ring-1 ring-black/[0.04]'
+                : 'text-[#64748b] bg-black/[0.04] hover:bg-[rgba(220,38,38,0.12)] hover:text-[#dc2626] ring-1 ring-black/[0.12]'
             )}
             onClick={(e) => {
               e.stopPropagation();
