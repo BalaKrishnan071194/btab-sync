@@ -79,70 +79,17 @@
     .logo {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      font-weight: 700;
-      font-size: 1.25rem;
-      color: var(--text);
+      font-size: 1.5rem;
       text-decoration: none;
+      letter-spacing: -0.02em;
     }
 
-    .logo-icon {
-      width: 32px;
-      height: 32px;
-      background: #1e1e2e;
-      border-radius: 7px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-
-    .logo-icon .b {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      font-size: 20px;
-      font-weight: 700;
-      color: #89b4fa;
-      margin-left: -2px;
-    }
-
-    .logo-icon .tab {
-      position: absolute;
-      top: 8px;
-      right: 5px;
-      width: 8px;
-      height: 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .logo-icon .tab-h {
-      width: 8px;
-      height: 2px;
-      background: #cdd6f4;
-      border-radius: 1px;
-    }
-
-    .logo-icon .tab-v {
-      width: 2px;
-      height: 10px;
-      background: #cdd6f4;
-      border-radius: 1px;
-      margin-left: 6px;
-      margin-top: -2px;
-    }
-
-    .logo-text {
-      display: flex;
-      align-items: baseline;
-    }
-
-    .logo-text .bt {
+    .logo .bt {
       color: #89b4fa;
       font-weight: 800;
     }
 
-    .logo-text .ab {
+    .logo .ab {
       color: var(--text);
       font-weight: 700;
     }
@@ -716,14 +663,7 @@
   <nav>
     <div class="nav-container">
       <a href="#" class="logo">
-        <div class="logo-icon">
-          <span class="b">b</span>
-          <div class="tab">
-            <div class="tab-h"></div>
-            <div class="tab-v"></div>
-          </div>
-        </div>
-        <span class="logo-text"><span class="bt">bTab</span><span class="ab"> Sync</span></span>
+        <span class="bt">bTab</span><span class="ab"> Sync</span>
       </a>
       <div class="nav-links">
         <a href="#features">Features</a>
