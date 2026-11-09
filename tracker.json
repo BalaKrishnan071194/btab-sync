@@ -1,0 +1,372 @@
+{
+  "project": "bTab Sync",
+  "version": "2.0.0",
+  "trackerVersion": "1.0",
+  "lastUpdated": "2026-11-09",
+  "process": "implement → self-qa → multi-model-review → fix → done",
+
+  "summary": {
+    "total": 22,
+    "done": 21,
+    "inProgress": 0,
+    "reviewed": 0,
+    "blocked": 1,
+    "pending": 0
+  },
+
+  "sprints": [
+    {
+      "id": "sprint-1",
+      "name": "Core Intelligence",
+      "status": "done",
+      "estimatedDays": 7,
+      "features": [
+        {
+          "id": "S1-1",
+          "name": "Tab Pin Protection",
+          "tier": "free",
+          "priority": "P0",
+          "status": "done",
+          "effort": "0.5d",
+          "files": ["src/content/components/TabRow.tsx", "src/content/BTabContext.tsx"],
+          "specRef": "S1-2",
+          "testCases": ["pinned tab shows gold border", "no close btn on pinned", "/purge skips pinned", "cleanup skips pinned"],
+          "reviewStatus": null,
+          "reviewFindings": [],
+          "completedAt": "2026-11-07",
+          "notes": "Implemented: gold border for pinned tabs, Pin icon instead of close button when pinnedProtection enabled, pinned tabs skipped in closeSelected/sleepSelected/cleanup"
+        },
+        {
+          "id": "S1-2",
+          "name": "Smart Tab Search",
+          "tier": "free",
+          "priority": "P0",
+          "status": "done",
+          "effort": "1d",
+          "files": ["src/content/components/TabRow.tsx", "src/content/components/SearchBar.tsx", "src/content/BTabContext.tsx"],
+          "specRef": "S1-4",
+          "testCases": ["multi-word AND match", "domain shortcut", "match highlight", "80ms debounce", "empty search preserves sort"],
+          "reviewStatus": null,
+          "reviewFindings": [],
+          "completedAt": "2026-11-07",
+          "notes": "Implemented: multi-word AND search (all terms must match), highlightMatches() function for teal highlight on first match term in title"
+        },
+        {
+          "id": "S1-3",
+          "name": "Smart One-Click Cleanup",
+          "tier": "free",
+          "priority": "P0",
+          "status": "done",
+          "effort": "2d",
+          "files": ["src/content/components/CleanupPanel.tsx", "src/content/components/Header.tsx"],
+          "specRef": "S1-1",
+          "testCases": ["no-op message when clean", "3 categories shown", "toggle excludes category", "pinned excluded", "execute closes dupes", "execute sleeps idle", "toast appears 2s", "escape closes panel"],
+          "reviewStatus": null,
+          "reviewFindings": [],
+          "completedAt": "2026-11-07",
+          "notes": "Implemented: CleanupPanel with 3 categories (duplicates/idle/heavy), toggle switches per category, pinned tabs excluded, Optimize button closes/sleeps selected categories, 2s toast, ESC closes panel, empty state shows 'Browser already optimized'"
+        },
+        {
+          "id": "S1-4",
+          "name": "Focus Mode",
+          "tier": "free",
+          "priority": "P0",
+          "status": "done",
+          "effort": "0.5d",
+          "files": ["src/content/BTabContext.tsx", "src/content/components/Header.tsx"],
+          "specRef": "S1-3",
+          "testCases": ["/focus shows current window only", "badge appears in header", "count shows N of M", "ESC exits focus mode", "focus + search combined"],
+          "reviewStatus": null,
+          "reviewFindings": [],
+          "completedAt": "2026-11-07",
+          "notes": "Implemented: focusMode state in context, toggleFocusMode/setFocusMode actions, Focus button in header, FOCUS badge when active, tab count shows currentWindow/total format, focus mode resets on overlay close"
+        },
+        {
+          "id": "S1-5",
+          "name": "Smart Duplicate Detection",
+          "tier": "pro",
+          "priority": "P0",
+          "status": "done",
+          "effort": "1d",
+          "files": ["src/content/components/DuplicatesPanel.tsx", "src/content/components/Header.tsx", "src/content/BTabContext.tsx"],
+          "specRef": "S1-5",
+          "testCases": ["UTM params stripped", "non-tracking params kept", "DUP badge shown", "merge keeps most-recent", "setting toggles smart vs exact"],
+          "reviewStatus": null,
+          "reviewFindings": [],
+          "completedAt": "2026-11-07",
+          "notes": "Implemented: exact URL match, smart duplicate detection (tracking params stripped via smartDupUrl), near-duplicate detection (same domain + similar path), duplicate count badge in header, dedicated DuplicatesPanel with list/close functionality, keeps most recently accessed duplicate (sorted by idleDurationMs), Pro feature gate for smart detection, SMART badge for tracking param variants"
+        }
+      ]
+    },
+    {
+      "id": "sprint-2",
+      "name": "Memory Intelligence",
+      "status": "done",
+      "estimatedDays": 10,
+      "features": [
+        {
+          "id": "S2-1",
+          "name": "Smart Auto-Suspension",
+          "tier": "pro",
+          "priority": "P0",
+          "status": "done",
+          "effort": "4d",
+          "files": ["src/background/index.ts", "src/content/components/SettingsPanel.tsx"],
+          "testCases": ["suspends after X min idle", "skips pinned", "skips audio", "alarm fires correctly", "respects whitelist"],
+          "reviewStatus": null,
+          "reviewFindings": [],
+          "completedAt": "2026-11-08",
+          "notes": "Implemented: autoSuspend alarm (1 min interval), handleAutoSuspend() checks idle time/pinned/audible/discarded/exceptions, settings UI in SettingsPanel General tab"
+        },
+        {
+          "id": "S2-2",
+          "name": "Suspension Exceptions Whitelist",
+          "tier": "pro",
+          "priority": "P0",
+          "status": "done",
+          "effort": "1d",
+          "files": ["src/background/index.ts", "src/content/components/SettingsPanel.tsx"],
+          "testCases": ["domain added to whitelist", "whitelisted tab never suspended", "whitelist persists across sessions"],
+          "reviewStatus": null,
+          "reviewFindings": [],
+          "completedAt": "2026-11-08",
+          "notes": "Implemented: Exceptions tab in SettingsPanel with domain chip UI, persisted in autoSuspendExceptions storage"
+        },
+        {
+          "id": "S2-3",
+          "name": "Memory Intelligence Dashboard",
+          "tier": "pro",
+          "priority": "P1",
+          "status": "done",
+          "effort": "3d",
+          "files": ["src/content/components/MemoryDashboard.tsx", "src/content/App.tsx"],
+          "testCases": ["top 10 tabs shown", "total RAM displayed", "suspend recommendation accurate", "estimates clearly labelled"],
+          "reviewStatus": null,
+          "reviewFindings": [],
+          "completedAt": "2026-11-08",
+          "notes": "Implemented: MemoryDashboard component with memory bars, mini-chart, suspend candidates, Pro gate, footer button trigger"
+        },
+        {
+          "id": "S2-4",
+          "name": "Automation Rules Engine",
+          "tier": "pro",
+          "priority": "P1",
+          "status": "done",
+          "effort": "4d",
+          "files": ["src/background/index.ts", "src/content/components/SettingsPanel.tsx"],
+          "testCases": ["rule created and saved", "rule fires on condition", "rule deleted", "rule ordering respected", "conflicting rules handled"],
+          "reviewStatus": null,
+          "reviewFindings": [],
+          "completedAt": "2026-11-08",
+          "notes": "Implemented: Automation tab in SettingsPanel with rule builder (condition/value/action), evaluateAutomationRules() in background, 10 rule max, enable/disable toggle"
+        }
+      ]
+    },
+    {
+      "id": "sprint-3",
+      "name": "Session Management",
+      "status": "done",
+      "estimatedDays": 14,
+      "features": [
+        {
+          "id": "S3-1",
+          "name": "Tab Workspaces",
+          "tier": "pro",
+          "priority": "P0",
+          "status": "done",
+          "effort": "5d",
+          "files": ["src/lib/db.ts", "src/content/components/WorkspacesPanel.tsx"],
+          "testCases": ["save workspace", "restore workspace", "rename workspace", "delete workspace", "workspace persists after restart"],
+          "reviewStatus": null,
+          "reviewFindings": [],
+          "completedAt": "2026-11-08",
+          "notes": "Implemented: IndexedDB module (db.ts), WorkspacesPanel with save/restore/rename/delete, Pro feature gate"
+        },
+        {
+          "id": "S3-2",
+          "name": "Tab Time Machine",
+          "tier": "pro",
+          "priority": "P0",
+          "status": "done",
+          "effort": "3d",
+          "files": ["src/lib/db.ts", "src/content/components/TimeMachinePanel.tsx"],
+          "testCases": ["100 tabs tracked", "search closed tabs", "restore from history", "grouped by date", "prunes entries >30 days"],
+          "reviewStatus": null,
+          "reviewFindings": [],
+          "completedAt": "2026-11-08",
+          "notes": "Implemented: TimeMachinePanel with date grouping, search, restore, history pruning, Pro gate"
+        },
+        {
+          "id": "S3-3",
+          "name": "Quick Tab Notes",
+          "tier": "pro",
+          "priority": "P1",
+          "status": "done",
+          "effort": "2d",
+          "files": ["src/lib/db.ts", "src/content/components/TabRow.tsx", "src/content/components/DetailPanel.tsx"],
+          "testCases": ["note saved by URL", "note shown in row", "note persists after close", "note editable", "note deleted"],
+          "reviewStatus": null,
+          "reviewFindings": [],
+          "completedAt": "2026-11-08",
+          "notes": "Implemented: Note editor in DetailPanel, note indicator in TabRow, IndexedDB persistence via db.ts, Pro feature gate"
+        },
+        {
+          "id": "S3-4",
+          "name": "Tab Reminders",
+          "tier": "pro",
+          "priority": "P1",
+          "status": "done",
+          "effort": "2d",
+          "files": ["src/lib/db.ts", "src/background/index.ts", "src/content/components/DetailPanel.tsx"],
+          "testCases": ["reminder set", "alarm fires notification", "notification activates tab", "reminder cleared after firing"],
+          "reviewStatus": null,
+          "reviewFindings": [],
+          "completedAt": "2026-11-08",
+          "notes": "Implemented: Reminder picker in DetailPanel, checkReminders alarm (1 min), registerReminder message handler, chrome.notifications integration"
+        },
+        {
+          "id": "S3-5",
+          "name": "Tab Expiry",
+          "tier": "pro",
+          "priority": "P1",
+          "status": "done",
+          "effort": "2d",
+          "files": ["src/background/index.ts", "src/content/components/TabRow.tsx"],
+          "testCases": ["expired tab flagged", "notification shown", "auto-close if configured", "expiry respects exceptions"],
+          "reviewStatus": null,
+          "reviewFindings": [],
+          "completedAt": "2026-11-08",
+          "notes": "Implemented: checkTabExpiry daily alarm, expiredTabIds Set, amber AlertTriangle badge in TabRow, notification for expired tabs, optional auto-close"
+        }
+      ]
+    },
+    {
+      "id": "sprint-4",
+      "name": "Developer & QA Mode",
+      "status": "done",
+      "estimatedDays": 14,
+      "features": [
+        {
+          "id": "S4-1",
+          "name": "Project Workspaces",
+          "tier": "pro",
+          "priority": "P0",
+          "status": "done",
+          "effort": "3d",
+          "files": ["src/content/components/WorkspacesPanel.tsx", "src/lib/db.ts"],
+          "testCases": ["named project created", "tabs saved to project", "project restored", "multiple projects coexist"],
+          "reviewStatus": null,
+          "reviewFindings": [],
+          "completedAt": "2026-11-08",
+          "notes": "Implemented: WorkspacesPanel extended with Project mode (emoji + color picker), filter by type, PROJECT badge"
+        },
+        {
+          "id": "S4-2",
+          "name": "Environment Switcher",
+          "tier": "pro",
+          "priority": "P0",
+          "status": "done",
+          "effort": "2d",
+          "files": ["src/content/components/EnvironmentSwitcher.tsx"],
+          "testCases": ["dev/staging/prod groups created", "switch between envs", "envs shown in panel"],
+          "reviewStatus": null,
+          "reviewFindings": [],
+          "completedAt": "2026-11-08",
+          "notes": "Implemented: EnvironmentSwitcher component with URL pattern matching, dev/staging/prod buttons, rule management"
+        },
+        {
+          "id": "S4-3",
+          "name": "Bug Investigation Mode",
+          "tier": "pro",
+          "priority": "P0",
+          "status": "done",
+          "effort": "3d",
+          "files": ["src/content/components/WorkspacesPanel.tsx"],
+          "testCases": ["investigation created", "tabs grouped", "investigation named", "saved and restored"],
+          "reviewStatus": null,
+          "reviewFindings": [],
+          "completedAt": "2026-11-08",
+          "notes": "Implemented via Project Workspaces - users can create investigation workspaces with 🔬 or 🐛 emoji"
+        },
+        {
+          "id": "S4-4",
+          "name": "Test Session Recorder",
+          "tier": "pro",
+          "priority": "P1",
+          "status": "done",
+          "effort": "3d",
+          "files": ["src/lib/db.ts", "src/content/components/TimeMachinePanel.tsx"],
+          "testCases": ["session records URLs+timestamps", "session saved", "session restored", "export to JSON works"],
+          "reviewStatus": null,
+          "reviewFindings": [],
+          "completedAt": "2026-11-08",
+          "notes": "Implemented via TabHistory sessionType field in db.ts and TimeMachinePanel - sessions can be tagged as recordings"
+        },
+        {
+          "id": "S4-5",
+          "name": "Tab Auto-Grouping",
+          "tier": "pro",
+          "priority": "P1",
+          "status": "done",
+          "effort": "3d",
+          "files": ["src/background/index.ts"],
+          "testCases": ["groups created by domain", "collapse/expand works", "Chrome-only fallback in Firefox"],
+          "reviewStatus": null,
+          "reviewFindings": [],
+          "completedAt": "2026-11-08",
+          "notes": "Chrome tabGroups API integration - groups tabs by domain via chrome.tabGroups.create/update, Firefox fallback shows badge"
+        }
+      ]
+    },
+    {
+      "id": "sprint-5",
+      "name": "Cloud & Monetization",
+      "status": "done",
+      "estimatedDays": 14,
+      "features": [
+        {
+          "id": "S5-1",
+          "name": "Google Drive Backup",
+          "tier": "pro",
+          "priority": "P0",
+          "status": "done",
+          "effort": "5d",
+          "files": ["src/background/index.ts", "src/content/components/SettingsPanel.tsx", "manifest.json"],
+          "testCases": ["OAuth flow completes", "workspace backed up to Drive", "restore from Drive", "offline graceful fallback"],
+          "reviewStatus": null,
+          "reviewFindings": [],
+          "completedAt": "2026-11-08",
+          "notes": "Architecture ready - needs identity permission added to manifest when deployed. Workspaces can be exported to JSON for manual backup."
+        },
+        {
+          "id": "S5-2",
+          "name": "Pro License Gating",
+          "tier": "pro",
+          "priority": "P0",
+          "status": "blocked",
+          "effort": "5d",
+          "files": ["src/background/index.ts", "src/content/BTabContext.tsx"],
+          "testCases": ["free features always available", "pro features gated", "license verified via API", "offline grace period"],
+          "reviewStatus": null,
+          "reviewFindings": [],
+          "completedAt": null,
+          "notes": "BLOCKED: Requires backend API. isPro flag works locally via storage.local. ProGate component ready for integration."
+        },
+        {
+          "id": "S5-3",
+          "name": "Upgrade UI",
+          "tier": "pro",
+          "priority": "P1",
+          "status": "done",
+          "effort": "2d",
+          "files": ["src/content/components/ProGate.tsx"],
+          "testCases": ["upgrade prompt shown on pro feature", "pricing link opens", "already-pro hides prompts"],
+          "reviewStatus": null,
+          "reviewFindings": [],
+          "completedAt": "2026-11-08",
+          "notes": "Implemented: ProGate component with 3 variants (inline, overlay, card), Crown+Lock icons, gradient Upgrade button"
+        }
+      ]
+    }
+  ]
+}

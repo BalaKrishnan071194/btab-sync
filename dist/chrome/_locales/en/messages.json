@@ -1,0 +1,232 @@
+{
+  "extensionName": {
+    "message": "bTab Sync"
+  },
+  "extensionDescription": {
+    "message": "Keyboard-driven tab manager with memory diagnostics."
+  },
+  "searchPlaceholder": {
+    "message": "Search tabs..."
+  },
+  "headerInactive": {
+    "message": "⚠️ $COUNT$ inactive tabs · ~$TOTAL$ MB total · $RECOVERABLE$ MB recoverable",
+    "placeholders": {
+      "count": { "content": "$1" },
+      "total": { "content": "$2" },
+      "recoverable": { "content": "$3" }
+    }
+  },
+  "headerOptimal": {
+    "message": "✨ All tabs active — memory is optimal."
+  },
+  "sortRecent": { "message": "Recent" },
+  "sortName": { "message": "Name" },
+  "sortMemory": { "message": "Memory" },
+  "sortIdle": { "message": "Idle Time" },
+  "labelIdle": { "message": "idle" },
+  "labelAgo": { "message": "ago" },
+  "labelFrozen": { "message": "FROZEN" },
+  "labelPinned": { "message": "PINNED" },
+  "btnSleepTitle": { "message": "Freeze tab to save memory" },
+  "btnCloseTitle": { "message": "Close tab" },
+  "btnRestoreTitle": { "message": "Restore tab" },
+  "btnMergeTitle": { "message": "Merge duplicate tabs" },
+  "btnPinTitle": { "message": "Pin tab (protected from cleanup)" },
+  "btnUnpinTitle": { "message": "Unpin tab" },
+  "btnRefreshTitle": { "message": "Refresh tabs" },
+  "sectionRecentlyClosed": { "message": "Recently Closed" },
+  "emptyRecentlyClosed": { "message": "No recently closed tabs." },
+  "emptyNoMatch": { "message": "No tabs match your search." },
+  "cmdHint": { "message": "Commands: /audio · /stale · /window · /purge · /focus" },
+  "cmdPurgeConfirm": {
+    "message": "⚡ Sleep all $COUNT$ inactive tabs?",
+    "placeholders": { "count": { "content": "$1" } }
+  },
+  "cmdPurgeConfirmBtn": { "message": "✓ Confirm" },
+  "privacyModeOn": { "message": "Privacy mode on" },
+  "privacyModeOff": { "message": "Privacy mode off" },
+  "labelAgoFormat": {
+    "message": "$TIME$ ago",
+    "placeholders": { "time": { "content": "$1" } }
+  },
+  "labelIdleFormat": {
+    "message": "idle $TIME$",
+    "placeholders": { "time": { "content": "$1" } }
+  },
+  "cleanupBtn": { "message": "Cleanup" },
+  "cleanupBtnTitle": { "message": "Smart Cleanup" },
+  "cleanupTitle": { "message": "Smart Cleanup" },
+  "cleanupLoading": { "message": "Analyzing tabs..." },
+  "cleanupDisclaimer": { "message": "Memory estimates are approximate. Pinned tabs are always protected." },
+  "cleanupDupsTitle": { "message": "Duplicate Tabs" },
+  "cleanupOldTitle": { "message": "Old Tabs" },
+  "cleanupDomainsTitle": { "message": "By Domain" },
+  "cleanupOlderThan": { "message": "Older than:" },
+  "cleanupDays": { "message": "days" },
+  "cleanupCloseDups": { "message": "Close Duplicates" },
+  "cleanupCloseOld": { "message": "Close Old Tabs" },
+  "cleanupCloseSelected": { "message": "Close Selected Domains" },
+  "cleanupConfirm": {
+    "message": "Close $COUNT$ tabs? This cannot be undone.",
+    "placeholders": { "count": { "content": "$1" } }
+  },
+  "cleanupCancel": { "message": "Cancel" },
+  "cleanupConfirmBtn": { "message": "Yes, Close Tabs" },
+  "cleanupResult": {
+    "message": "Closed $COUNT$ tabs",
+    "placeholders": { "count": { "content": "$1" } }
+  },
+  "cleanupOptimized": { "message": "✨ Browser already optimized" },
+  "cleanupOptimizeBtn": { "message": "Optimize" },
+  "cleanupDuplicates": {
+    "message": "$COUNT$ duplicate tabs · ~$MEMORY$ MB",
+    "placeholders": { "count": { "content": "$1" }, "memory": { "content": "$2" } }
+  },
+  "cleanupIdle": {
+    "message": "$COUNT$ idle tabs · ~$MEMORY$ MB",
+    "placeholders": { "count": { "content": "$1" }, "memory": { "content": "$2" } }
+  },
+  "cleanupHeavy": {
+    "message": "$COUNT$ heavy tabs · ~$MEMORY$ MB",
+    "placeholders": { "count": { "content": "$1" }, "memory": { "content": "$2" } }
+  },
+  "cleanupOldTabs": {
+    "message": "$COUNT$ tabs · ~$MEMORY$ MB",
+    "placeholders": { "count": { "content": "$1" }, "memory": { "content": "$2" } }
+  },
+  "focusModeLabel": { "message": "FOCUS" },
+  "focusModeCount": {
+    "message": "$CURRENT$ of $TOTAL$ tabs",
+    "placeholders": { "current": { "content": "$1" }, "total": { "content": "$2" } }
+  },
+  "focusModeEnable": { "message": "Focus Mode: show only current window" },
+  "focusModeDisable": { "message": "Exit Focus Mode" },
+  "searchMultiWordHint": { "message": "Tip: Use multiple words to match all terms" },
+  "pinnedProtected": { "message": "Pinned tab (protected)" },
+  "smartDupDetected": { "message": "Smart duplicate detected (tracking params stripped)" },
+  "dupPanelTitle": { "message": "Duplicate Tabs" },
+  "dupTabsCount": { "message": "tabs" },
+  "dupToClose": { "message": "to close" },
+  "dupKeep": { "message": "KEEP" },
+  "dupCloseOthers": {
+    "message": "Close $COUNT$",
+    "placeholders": { "count": { "content": "$1" } }
+  },
+  "dupCloseAll": {
+    "message": "Close all duplicates ($COUNT$ tabs · ~$MEMORY$ MB)",
+    "placeholders": { "count": { "content": "$1" }, "memory": { "content": "$2" } }
+  },
+  "dupClosedResult": {
+    "message": "Closed $COUNT$ tabs · Freed ~$MEMORY$ MB",
+    "placeholders": { "count": { "content": "$1" }, "memory": { "content": "$2" } }
+  },
+  "dupNoDuplicates": { "message": "No duplicate tabs found" },
+  "dupProFeature": { "message": "Smart Duplicate Detection is a Pro feature" },
+  "dupProDescription": { "message": "Upgrade to detect duplicates with tracking parameters stripped" },
+  "dupBadgeCount": {
+    "message": "$COUNT$ dups",
+    "placeholders": { "count": { "content": "$1" } }
+  },
+  "rulesTitle": { "message": "Automation Rules" },
+  "rulesDescription": { "message": "Create rules to automatically manage tabs based on conditions." },
+  "rulesProFeature": { "message": "Automation Rules is a Pro feature" },
+  "rulesProDescription": { "message": "Upgrade to create custom automation rules for tab management" },
+  "rulesEmpty": { "message": "No automation rules configured" },
+  "rulesAddNew": { "message": "Add New Rule" },
+  "rulesEnabled": { "message": "Enabled" },
+  "rulesDisabled": { "message": "Disabled" },
+  "rulesPriority": { "message": "Priority" },
+  "rulesCondition": { "message": "Condition" },
+  "rulesAction": { "message": "Action" },
+  "rulesConditionAge": { "message": "Tab age" },
+  "rulesConditionDomain": { "message": "Domain matches" },
+  "rulesConditionTitle": { "message": "Title contains" },
+  "rulesConditionMemory": { "message": "Memory usage" },
+  "rulesActionSuspend": { "message": "Suspend tab" },
+  "rulesActionClose": { "message": "Close tab" },
+  "rulesActionGroup": { "message": "Move to group" },
+  "rulesActionPin": { "message": "Pin tab" },
+  "rulesOlderThan": { "message": "older than" },
+  "rulesContains": { "message": "contains" },
+  "rulesMatches": { "message": "matches" },
+  "rulesGreaterThan": { "message": "greater than" },
+  "rulesMinutes": { "message": "minutes" },
+  "rulesHours": { "message": "hours" },
+  "rulesDays": { "message": "days" },
+  "rulesMB": { "message": "MB" },
+  "rulesSave": { "message": "Save Rule" },
+  "rulesCancel": { "message": "Cancel" },
+  "rulesDelete": { "message": "Delete" },
+  "rulesDeleteConfirm": { "message": "Delete this rule?" },
+  "rulesSaved": { "message": "Rule saved" },
+  "rulesDeleted": { "message": "Rule deleted" },
+  "rulesEvaluating": { "message": "Evaluating rules..." },
+  "rulesApplied": {
+    "message": "Applied $COUNT$ rule actions",
+    "placeholders": { "count": { "content": "$1" } }
+  },
+  "rulesGroupName": { "message": "Group name" },
+  "rulesMoveUp": { "message": "Move up" },
+  "rulesMoveDown": { "message": "Move down" },
+
+  "memPanelTitle": { "message": "Memory Dashboard" },
+  "memTotalUsage": { "message": "Total Usage" },
+  "memTabCount": { "message": "Tab Count" },
+  "memPotentialSavings": { "message": "Potential Savings" },
+  "memChartTitle": { "message": "Memory Over Time" },
+  "memChartCollecting": { "message": "Collecting data..." },
+  "memTopTabsTitle": { "message": "Top 10 Tabs by Memory" },
+  "memSuggestTitle": {
+    "message": "$COUNT$ tabs recommended for suspension",
+    "placeholders": { "count": { "content": "$1" } }
+  },
+  "memSuggestDescription": {
+    "message": "Suspending these tabs could free up ~$MEMORY$",
+    "placeholders": { "memory": { "content": "$1" } }
+  },
+  "memSuggestHighMemIdle": { "message": "High memory + long idle" },
+  "memSuggestHighMem": { "message": "High memory usage" },
+  "memSuggestLongIdle": { "message": "Long idle time" },
+  "memSuspendBtn": { "message": "Suspend" },
+  "memSuspendAllBtn": { "message": "Suspend All" },
+  "memRefreshBtn": { "message": "Refresh stats" },
+  "memRefreshed": { "message": "Stats refreshed" },
+  "memTabSuspended": { "message": "Tab suspended" },
+  "memSuspendedCount": {
+    "message": "Suspended $COUNT$ tabs · Freed ~$MEMORY$",
+    "placeholders": { "count": { "content": "$1" }, "memory": { "content": "$2" } }
+  },
+  "memDisclaimer": { "message": "Memory estimates are approximate and may vary from actual browser usage." },
+  "memProFeature": { "message": "Memory Dashboard is a Pro feature" },
+  "memProDescription": { "message": "Upgrade to Pro for detailed memory analytics and smart suspend recommendations" },
+
+  "noteTitle": { "message": "Quick Note" },
+  "notePlaceholder": { "message": "Add a note for this tab..." },
+  "noteSaved": { "message": "Note saved" },
+  "noteDeleted": { "message": "Note deleted" },
+  "noteProFeature": { "message": "Quick Notes is a Pro feature" },
+  "noteProDescription": { "message": "Upgrade to Pro to attach notes to any tab" },
+  "noteIndicator": { "message": "Has note" },
+
+  "reminderTitle": { "message": "Set Reminder" },
+  "reminderSet": { "message": "Reminder set" },
+  "reminderFired": { "message": "Tab Reminder" },
+  "reminderProFeature": { "message": "Tab Reminders is a Pro feature" },
+  "reminderProDescription": { "message": "Upgrade to Pro to set reminders for tabs" },
+  "reminder15min": { "message": "15 minutes" },
+  "reminder30min": { "message": "30 minutes" },
+  "reminder1hour": { "message": "1 hour" },
+  "reminder3hours": { "message": "3 hours" },
+  "reminderTomorrow": { "message": "Tomorrow" },
+
+  "expiryTitle": { "message": "Tab Expiry" },
+  "expiryEnabled": { "message": "Enable tab expiry notifications" },
+  "expiryAutoClose": { "message": "Auto-close expired tabs" },
+  "expiryNotice": {
+    "message": "$COUNT$ tab(s) haven't been visited in 7+ days",
+    "placeholders": { "count": { "content": "$1" } }
+  },
+  "expiryIndicator": { "message": "Expired - not visited in 7+ days" },
+  "expiryProFeature": { "message": "Tab Expiry is a Pro feature" },
+  "expiryProDescription": { "message": "Upgrade to Pro for tab expiry tracking" }
+}

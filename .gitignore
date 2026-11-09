@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+
+# Build outputs (keep dist for releases)
+# dist/
+
+# Test artifacts
+test-results/
+playwright-report/
+coverage/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Local dev
+mockup/
+*.zip

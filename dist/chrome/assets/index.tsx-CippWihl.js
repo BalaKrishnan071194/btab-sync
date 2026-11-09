@@ -1,0 +1,10 @@
+import{c as u,j as s,r as m,A as p,a as h}from"./index-BSCXctDa.js";import"./index-DlH6VUci.js";import"./license-D_A-yaqw.js";const r="btab-sync-root",w="btab-sync-shadow-host",t={shadowHost:null,shadowRoot:null,reactRoot:null,isInitialized:!1,currentPayload:null};function y(){return h}function f(){const e=document.getElementById(r);e&&e.remove();const o=document.createElement("div");o.id=r,o.className=w,o.style.cssText=`
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: visible !important;
+    z-index: 2147483647 !important;
+    pointer-events: none !important;
+  `;const a=o.attachShadow({mode:"closed"}),n=document.createElement("style");n.textContent=y(),a.appendChild(n);const i=document.createElement("div");return i.id="btab-react-root",i.style.cssText="pointer-events: auto;",a.appendChild(i),document.body.appendChild(o),{host:o,shadow:a}}function c(e,o){const a=e.getElementById("btab-react-root");if(!a)throw new Error("[bTab] Mount point not found in shadow root");const n=u.createRoot(a);return n.render(s.jsx(m.StrictMode,{children:s.jsx(p,{initialPayload:o})})),n}function d(){if(t.isInitialized){console.warn("[bTab] Content script already initialized");return}try{const{host:e,shadow:o}=f();t.shadowHost=e,t.shadowRoot=o,t.reactRoot=c(o),chrome.runtime.onMessage.addListener(l),t.isInitialized=!0}catch(e){console.warn("[bTab] Failed to initialize content script:",e)}}function l(e,o,a){const n=e;n.action==="toggleOmniOverlay"&&n.payload&&(t.currentPayload=n.payload,t.reactRoot&&t.shadowRoot&&(t.reactRoot.unmount(),t.reactRoot=c(t.shadowRoot,n.payload)))}function R(){t.reactRoot&&(t.reactRoot.unmount(),t.reactRoot=null),t.shadowHost&&(t.shadowHost.remove(),t.shadowHost=null),t.shadowRoot=null,t.currentPayload=null,t.isInitialized=!1,chrome.runtime.onMessage.removeListener(l)}window.addEventListener("pagehide",R);document.readyState==="loading"?document.addEventListener("DOMContentLoaded",d):d();export{t as __testState,R as cleanup,d as initialize};

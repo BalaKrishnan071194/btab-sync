@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy - bTab Sync</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #080a16;
+      --text: #edf0ff;
+      --text-muted: #8b94b2;
+      --teal: #1dd9b4;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      padding: 2rem;
+    }
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 0;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    .updated {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+    }
+    h2 {
+      font-size: 1.25rem;
+      margin: 2rem 0 1rem;
+      color: var(--teal);
+    }
+    p, ul {
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    ul { padding-left: 1.5rem; }
+    li { margin-bottom: 0.5rem; }
+    a { color: var(--teal); }
+    .back {
+      display: inline-block;
+      margin-bottom: 2rem;
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+    .back:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="index.html" class="back">← Back to home</a>
+    
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated: January 2025</p>
+    
+    <h2>Summary</h2>
+    <p>
+      <strong>bTab Sync does not collect, store, or transmit any of your personal data.</strong>
+      The extension runs entirely in your browser. There is no backend server, no analytics, 
+      no tracking, and no network requests except for license validation (Pro users only).
+    </p>
+    
+    <h2>Data We Don't Collect</h2>
+    <ul>
+      <li>Your browsing history</li>
+      <li>Tab titles, URLs, or content</li>
+      <li>Personal information</li>
+      <li>Usage analytics or telemetry</li>
+      <li>Cookies or tracking identifiers</li>
+    </ul>
+    
+    <h2>Data Stored Locally</h2>
+    <p>bTab Sync stores the following data in your browser's local storage (chrome.storage.local):</p>
+    <ul>
+      <li><strong>Settings:</strong> Your preferences (theme, sort order, auto-suspend settings)</li>
+      <li><strong>Workspaces:</strong> Saved tab collections (Pro feature)</li>
+      <li><strong>Tab history:</strong> Recently closed tabs for Time Machine (Pro feature)</li>
+      <li><strong>License info:</strong> Your license key and device ID (Pro users only)</li>
+    </ul>
+    <p>This data never leaves your device and is not synced to any server.</p>
+    
+    <h2>License Validation (Pro Only)</h2>
+    <p>
+      If you purchase a Pro license, the extension communicates with LemonSqueezy's API to:
+    </p>
+    <ul>
+      <li>Validate your license key on activation</li>
+      <li>Periodically verify the license is still valid (every 24 hours)</li>
+    </ul>
+    <p>
+      This communication includes only your license key and a device identifier (a hash of 
+      your browser's characteristics). No browsing data is ever transmitted.
+    </p>
+    
+    <h2>Permissions Explained</h2>
+    <ul>
+      <li><strong>tabs:</strong> Required to list, switch, close, and manage your tabs</li>
+      <li><strong>activeTab:</strong> Required to access the current tab's information</li>
+      <li><strong>storage:</strong> Required to save your settings locally</li>
+      <li><strong>alarms:</strong> Required for auto-suspend and reminder features</li>
+      <li><strong>sessions:</strong> Required to restore recently closed tabs</li>
+      <li><strong>notifications:</strong> Required for reminder notifications</li>
+    </ul>
+    
+    <h2>Third-Party Services</h2>
+    <p>
+      The only third-party service used is <a href="https://lemonsqueezy.com" target="_blank">LemonSqueezy</a> 
+      for payment processing and license management (Pro users only). 
+      Please refer to their <a href="https://www.lemonsqueezy.com/privacy" target="_blank">privacy policy</a>.
+    </p>
+    
+    <h2>Open Source</h2>
+    <p>
+      bTab Sync is open source. You can review the complete source code at 
+      <a href="https://github.com/user/btab-switcher" target="_blank">GitHub</a> to verify 
+      these privacy claims.
+    </p>
+    
+    <h2>Contact</h2>
+    <p>
+      For privacy-related questions, contact: 
+      <a href="mailto:privacy@btabsync.com">privacy@btabsync.com</a>
+    </p>
+  </div>
+</body>
+</html>
