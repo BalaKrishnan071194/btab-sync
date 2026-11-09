@@ -14,7 +14,7 @@
 
 import { memo, useState, useCallback, type ReactNode, Fragment } from 'react';
 import { motion } from 'framer-motion';
-import { Moon, X, Link2, Flame, Zap, Snowflake, Leaf, Pin, PinOff, StickyNote, AlertTriangle, Play, Volume2 } from 'lucide-react';
+import { Moon, X, Link2, Flame, Zap, Snowflake, Cpu, Pin, PinOff, StickyNote, AlertTriangle, Play, Volume2 } from 'lucide-react';
 import { Button } from '../ui/button';
 import { useSettings, useIsPro, isDarkTheme } from '../BTabContext';
 import type { TabInfo } from '../BTabContext';
@@ -242,7 +242,8 @@ const MemoryBadge = memo(function MemoryBadge({
   isDark,
 }: MemoryBadgeProps): React.JSX.Element {
   const tier = getMemoryTier(mb);
-  const Icon = discarded ? Snowflake : tier === 'lo' ? Leaf : tier === 'md' ? Zap : Flame;
+  // Use Cpu icon for memory, Snowflake for frozen/discarded tabs
+  const Icon = discarded ? Snowflake : Cpu;
 
   const colors = {
     lo: { bg: 'rgba(34,197,94,0.1)', border: 'rgba(34,197,94,0.2)', text: '#22c55e' },
