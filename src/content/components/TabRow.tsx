@@ -14,7 +14,7 @@
 
 import { memo, useState, useCallback, type ReactNode, Fragment } from 'react';
 import { motion } from 'framer-motion';
-import { Moon, X, Link2, Flame, Zap, Snowflake, Cpu, Pin, PinOff, StickyNote, AlertTriangle, Play, Volume2 } from 'lucide-react';
+import { Moon, X, Link2, Flame, Zap, Cpu, Pin, PinOff, StickyNote, AlertTriangle, Play, Volume2 } from 'lucide-react';
 import { Button } from '../ui/button';
 import { useSettings, useIsPro, isDarkTheme } from '../BTabContext';
 import type { TabInfo } from '../BTabContext';
@@ -242,8 +242,8 @@ const MemoryBadge = memo(function MemoryBadge({
   isDark,
 }: MemoryBadgeProps): React.JSX.Element {
   const tier = getMemoryTier(mb);
-  // Use Cpu icon for memory, Snowflake for frozen/discarded tabs
-  const Icon = discarded ? Snowflake : Cpu;
+  // Use Moon icon for sleeping/discarded tabs, Cpu for active tabs
+  const Icon = discarded ? Moon : Cpu;
 
   const colors = {
     lo: { bg: 'rgba(34,197,94,0.1)', border: 'rgba(34,197,94,0.2)', text: '#22c55e' },
@@ -301,14 +301,14 @@ const StatusPill = memo(function StatusPill({
     );
   }
 
-  // Frozen/Discarded - just icon, no text
+  // Frozen/Discarded - use Moon icon (same as sleep button)
   if (tab.discarded) {
     return (
       <span 
         className={cn(baseClasses, 'bg-[rgba(122,162,247,0.12)] text-[#7aa2f7] border-[rgba(122,162,247,0.25)]')}
-        title="Frozen - Memory saved"
+        title="Sleeping - Memory saved"
       >
-        <Snowflake className="w-3 h-3 shrink-0" strokeWidth={2.5} />
+        <Moon className="w-3 h-3 shrink-0" strokeWidth={2.5} />
       </span>
     );
   }
