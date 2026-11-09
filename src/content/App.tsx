@@ -123,7 +123,7 @@ function Footer({
         >
           <History className="w-3.5 h-3.5" />
           {!isPro && (
-            <Crown className="w-2 h-2 absolute -top-0.5 -right-0.5 text-[#f9e2af]" />
+            <Crown className="w-3 h-3 absolute -top-1 -right-1 text-[#eba304]" />
           )}
         </button>
 
@@ -143,7 +143,7 @@ function Footer({
         >
           <FolderOpen className="w-3.5 h-3.5" />
           {!isPro && (
-            <Crown className="w-2 h-2 absolute -top-0.5 -right-0.5 text-[#f9e2af]" />
+            <Crown className="w-3 h-3 absolute -top-1 -right-1 text-[#eba304]" />
           )}
         </button>
 
@@ -163,7 +163,7 @@ function Footer({
         >
           <BarChart3 className="w-3.5 h-3.5" />
           {!isPro && (
-            <Crown className="w-2 h-2 absolute -top-0.5 -right-0.5 text-[#f9e2af]" />
+            <Crown className="w-3 h-3 absolute -top-1 -right-1 text-[#eba304]" />
           )}
         </button>
 

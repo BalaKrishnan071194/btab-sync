@@ -206,7 +206,7 @@ export const Header = memo(function Header({
           </Button>
           {/* Pro crown badge when not Pro */}
           {!isPro && (
-            <Crown className="w-2 h-2 absolute -top-0.5 -right-0.5 text-[#f9e2af]" />
+            <Crown className="w-3 h-3 absolute -top-1 -right-1 text-[#eba304]" />
           )}
           {/* S1-5: Duplicate count badge - only show for Pro users */}
           {isPro && duplicateCount > 0 && (
@@ -242,7 +242,7 @@ export const Header = memo(function Header({
           </Button>
           {/* Pro crown badge when not Pro */}
           {!isPro && (
-            <Crown className="w-2 h-2 absolute -top-0.5 -right-0.5 text-[#f9e2af]" />
+            <Crown className="w-3 h-3 absolute -top-1 -right-1 text-[#eba304]" />
           )}
         </div>
 
