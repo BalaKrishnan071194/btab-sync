@@ -255,8 +255,8 @@ const MemoryBadge = memo(function MemoryBadge({
   return (
     <span
       className={cn(
-        'flex items-center gap-1 px-1.5 py-0.5 rounded-md',
-        'text-[10px] font-bold tabular-nums',
+        'inline-flex items-center gap-1 px-1.5 py-1 rounded-md',
+        'text-[11px] font-bold tabular-nums leading-none whitespace-nowrap',
         'border transition-colors duration-150'
       )}
       style={{ 
@@ -265,8 +265,8 @@ const MemoryBadge = memo(function MemoryBadge({
         color: color.text 
       }}
     >
-      <Icon className="w-2.5 h-2.5" strokeWidth={2.5} />
-      {mb}
+      <Icon className="w-3 h-3 shrink-0" strokeWidth={2.5} />
+      <span>{mb}</span>
     </span>
   );
 });
