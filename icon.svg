@@ -1,8 +1,13 @@
-﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
-  <rect width="128" height="128" rx="28" fill="#1e1e2e"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <!-- Outer shadow/glow for light background visibility -->
+  <rect width="128" height="128" rx="28" fill="#0a0a14" stroke="#1dd9b4" stroke-width="3"/>
+  <!-- Main background -->
+  <rect x="3" y="3" width="122" height="122" rx="26" fill="#1e1e2e"/>
+  <!-- Letter b -->
   <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle"
     font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
-    font-size="58" font-weight="700" letter-spacing="-2" fill="#89b4fa">b</text>
+    font-size="58" font-weight="700" letter-spacing="-2" fill="#1dd9b4">b</text>
+  <!-- Tab indicator bars -->
   <rect x="72" y="38" width="22" height="4" rx="2" fill="#cdd6f4"/>
   <rect x="80" y="38" width="4" height="30" rx="2" fill="#cdd6f4"/>
 </svg>
