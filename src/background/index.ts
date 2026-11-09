@@ -6,6 +6,7 @@
  */
 
 import { ext } from '../lib/browsers';
+import { validateLicense } from '../lib/license';
 
 // ============================================================================
 // Type Definitions
@@ -220,10 +221,8 @@ ext.tabs.query({}).then((tabs) => {
 });
 
 // S5-2: Validate license on startup
-import('../lib/license').then(({ validateLicense }) => {
-  void validateLicense();
-}).catch(() => {
-  // Ignore import errors on startup
+validateLicense().catch(() => {
+  // Ignore validation errors on startup
 });
 
 // ============================================================================
@@ -769,7 +768,6 @@ ext.alarms.onAlarm.addListener(async (alarm) => {
   // S5-2: License validation (periodically validates with LemonSqueezy)
   if (alarm.name === 'licenseValidation') {
     try {
-      const { validateLicense } = await import('../lib/license');
       await validateLicense();
     } catch (e) {
       console.warn('[bTab Sync] licenseValidation:', e);

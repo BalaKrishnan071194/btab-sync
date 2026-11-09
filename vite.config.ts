@@ -122,6 +122,10 @@ export default defineConfig({
     emptyOutDir: true,
     sourcemap: process.env["NODE_ENV"] === "development",
     minify: "esbuild",
+    // Disable module preload polyfill - it uses 'document' which breaks service workers
+    modulePreload: {
+      polyfill: false,
+    },
     rollupOptions: {
       output: {
         // Prevent code splitting for content scripts (must be single file)
