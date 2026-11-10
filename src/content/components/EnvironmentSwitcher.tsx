@@ -162,7 +162,7 @@ export const EnvironmentSwitcher = memo(function EnvironmentSwitcher({
 
     try {
       const newUrl = currentUrl.replace(currentEnv.pattern, envMapping.pattern);
-      ext.tabs.create({ url: newUrl, active: true });
+      window.open(newUrl, '_blank', 'noopener,noreferrer');
     } catch (e) {
       console.warn('[bTab] Failed to switch environment:', e);
     }

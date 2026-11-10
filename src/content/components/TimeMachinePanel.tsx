@@ -346,7 +346,7 @@ export const TimeMachinePanel = memo(function TimeMachinePanel({
   // Restore tab
   const handleRestore = useCallback(async (entry: TabHistoryEntry) => {
     try {
-      await ext.tabs.create({ url: entry.url, active: true });
+      window.open(entry.url, '_blank', 'noopener,noreferrer');
       setToastMessage('✨ Tab restored');
       setTimeout(() => setToastMessage(null), 2000);
     } catch (e) {

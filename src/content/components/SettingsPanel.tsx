@@ -861,7 +861,11 @@ function LicenseTab({ isDark, isPro }: LicenseTabProps): React.JSX.Element {
               href="https://btab-sync.lemonsqueezy.com/checkout/buy/2742cd45-08b6-4c41-bcde-13613e116565" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-[#1dd9b4] hover:underline"
+              className="text-[#1dd9b4] hover:underline cursor-pointer"
+              onClick={(e) => {
+                e.preventDefault();
+                window.open('https://btab-sync.lemonsqueezy.com/checkout/buy/2742cd45-08b6-4c41-bcde-13613e116565', '_blank', 'noopener,noreferrer');
+              }}
             >
               Get a license key →
             </a>

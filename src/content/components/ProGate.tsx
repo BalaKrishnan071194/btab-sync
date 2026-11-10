@@ -59,8 +59,8 @@ export const ProGate = memo(function ProGate({
     if (onUpgrade) {
       onUpgrade();
     } else {
-      // Open upgrade URL in new tab
-      ext.tabs.create({ url: UPGRADE_URL, active: true });
+      // Open upgrade URL in new tab using window.open (works reliably in content scripts)
+      window.open(UPGRADE_URL, '_blank', 'noopener,noreferrer');
     }
   }, [onUpgrade]);
 
