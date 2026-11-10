@@ -36,7 +36,7 @@ interface ProGateProps {
 // Constants
 // ============================================================================
 
-const UPGRADE_URL = 'https://btab.app/pro'; // Placeholder - update with real URL
+const UPGRADE_URL = 'https://btab-sync.lemonsqueezy.com/checkout/buy/2742cd45-08b6-4c41-bcde-13613e116565';
 
 // ============================================================================
 // Component
