@@ -11,6 +11,25 @@ A premium, local-first, cross-browser extension for power users who manage many 
 
 ---
 
+## 💎 Get bTab Sync Pro
+
+<p align="center">
+  <strong><s>$100</s> $49</strong> — Lifetime License
+</p>
+
+<p align="center">
+  <a href="https://btab.lemonsqueezy.com/buy/btab-sync-pro">
+    <img src="https://img.shields.io/badge/Buy_Pro-$49_Lifetime-1dd9b4?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTIwIDEyVjhhMiAyIDAgMCAwLTItMkg2YTIgMiAwIDAgMC0yIDJ2MTJhMiAyIDAgMCAwIDIgMmgxMiIvPjxwYXRoIGQ9Im0xMiAxMiA0IDQtNCAzLjV2LTciLz48L3N2Zz4=" alt="Buy Pro">
+  </a>
+</p>
+
+✅ All Pro features forever  
+✅ Chrome & Firefox support  
+✅ Lifetime updates included  
+✅ No subscription, own it forever
+
+---
+
 ## 📸 Screenshots
 
 <p align="center">
@@ -371,8 +390,32 @@ Contributions are welcome! Please read our contributing guidelines before submit
 
 ## 📞 Support
 
-- **Issues**: [GitHub Issues](https://github.com/yourusername/btab-switcher/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/btab-switcher/discussions)
+- **Issues**: [GitHub Issues](https://github.com/BalaKrishnan071194/btab-sync/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/BalaKrishnan071194/btab-sync/discussions)
+
+---
+
+## 💎 Upgrade to Pro
+
+<p align="center">
+  <strong><s>$100</s> $49</strong> — Lifetime License
+</p>
+
+| Free | Pro |
+|:----:|:---:|
+| Smart Search | ✅ Everything in Free |
+| Pin Protection | + Auto-Suspend |
+| One-Click Cleanup | + Memory Dashboard |
+| Focus Mode | + Tab Workspaces |
+| Recently Closed | + Time Machine (30 days) |
+| 10 Languages | + Quick Notes |
+| Dark/Light Themes | + Tab Reminders |
+| | + Automation Rules |
+| | + Project Workspaces |
+
+<p align="center">
+  <a href="https://btab.lemonsqueezy.com/buy/btab-sync-pro"><strong>🚀 Get Pro — $49 Lifetime</strong></a>
+</p>
 
 ---
 

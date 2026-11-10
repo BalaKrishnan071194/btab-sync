@@ -90,18 +90,13 @@ Everything in Free, plus:
 
 ## Pricing
 
-### Recommended: One-time Purchase
+### Single Payment (Recommended)
 
-**$9** — Lifetime Pro License
+**~~$100~~ $49** — Lifetime Pro License
 - All Pro features forever
 - All future updates included
 - No subscription, no recurring fees
-- Instant delivery via email
-
-### Alternative: Pay What You Want
-- Minimum: $5
-- Suggested: $9
-- Generous: $19
+- Instant license key delivery
 
 ---
 
