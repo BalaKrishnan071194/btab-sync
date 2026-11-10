@@ -152,12 +152,19 @@ const hasSessions = typeof chrome.sessions?.getRecentlyClosed === 'function';
 const BTAB_PRO_DEFAULT = true;
 let _isPro = BTAB_PRO_DEFAULT;
 
-// Initialize Pro status from storage
-ext.storage.local.get(['isPro']).then((result) => {
-  if (typeof result['isPro'] === 'boolean') {
-    _isPro = result['isPro'];
-  }
-});
+// Initialize Pro status
+if (BTAB_PRO_DEFAULT) {
+  // Dev mode: Always Pro, set storage to match
+  _isPro = true;
+  ext.storage.local.set({ isPro: true, btab_dev_pro: true });
+} else {
+  // Production mode: Read from storage
+  ext.storage.local.get(['isPro']).then((result) => {
+    if (typeof result['isPro'] === 'boolean') {
+      _isPro = result['isPro'];
+    }
+  });
+}
 
 function isPro(): boolean {
   return _isPro;
@@ -220,10 +227,12 @@ ext.tabs.query({}).then((tabs) => {
   }
 });
 
-// S5-2: Validate license on startup
-validateLicense().catch(() => {
-  // Ignore validation errors on startup
-});
+// S5-2: Validate license on startup (skip if dev mode)
+if (!BTAB_PRO_DEFAULT) {
+  validateLicense().catch(() => {
+    // Ignore validation errors on startup
+  });
+}
 
 // ============================================================================
 // Helper Functions
@@ -452,7 +461,10 @@ ext.alarms.create('autoSuspend', { periodInMinutes: 1 });
 // S5-2: License Validation Alarm (every 6 hours, checks once per 24h)
 // ============================================================================
 
-ext.alarms.create('licenseValidation', { periodInMinutes: 60 * 6 }); // Every 6 hours
+// Only create license validation alarm in production mode
+if (!BTAB_PRO_DEFAULT) {
+  ext.alarms.create('licenseValidation', { periodInMinutes: 60 * 6 }); // Every 6 hours
+}
 
 /** Get hostname from URL for exception matching */
 function getHostname(url: string): string {
