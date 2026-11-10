@@ -4,42 +4,53 @@
 **bTab Sync Pro**
 
 ## Tagline (Short description - max 80 chars)
-Browser intelligence for power users. Manage 100+ tabs effortlessly.
+Browser productivity for developers. Manage 100+ tabs effortlessly.
 
-## One-liner
-The keyboard-first tab manager that actually saves your RAM.
+## SEO Description (120-160 chars)
+Take control of your browser. Project workspaces, test session recorder, memory optimization, and automation for power users.
 
 ---
 
 ## Product Description (Main listing)
 
-### 🚀 Stop drowning in tabs. Start commanding them.
+### Take control of your browser.
 
-bTab Sync is the premium tab management extension for developers, researchers, and anyone who keeps 50+ tabs open without guilt.
+bTab Sync is the browser productivity platform for developers, QA engineers, and power users who work with dozens of tabs every day.
 
-**One keyboard shortcut (Ctrl+Shift+K) opens your command center:**
-- See all tabs across windows with memory usage
-- Search instantly with multi-word matching
-- Close duplicates and sleep idle tabs in one click
-- Never lose a tab again with 30-day history
+**Click the toolbar icon to open your command center:**
+- Manage hundreds of tabs without RAM meltdown
+- Switch between projects instantly
+- Record testing sessions for QA
+- Automate repetitive tab management
+- Keep your development environments organized
 
-### Why bTab Sync Pro?
+**Privacy-first. Keyboard-first. Built for power users.**
 
-**🔒 100% Private**
+---
+
+## Why bTab Sync Pro?
+
+### 🎯 Built for Software Professionals
+
+| User | How bTab helps |
+|------|----------------|
+| Frontend Developer | Switch between dev/staging/prod environments |
+| QA Engineer | Record testing sessions, export tab history |
+| Backend Developer | Organize API docs and project tabs |
+| Freelancer | Separate client projects with workspaces |
+
+### 🔒 100% Private
 Your data never leaves your browser. No accounts, no sync servers, no tracking. Everything stays local.
 
-**⚡ Blazing Fast**
-Opens in under 100ms. Shadow DOM isolation means zero conflict with any website.
-
-**🎨 Premium Design**
-Dark & light themes. Smooth animations. Every pixel intentional.
+### ⚡ Blazing Fast
+Opens instantly. Shadow DOM isolation means zero conflict with any website.
 
 ---
 
 ## Free vs Pro Comparison
 
 ### 🆓 Free (Forever)
-- Smart tab search with highlighting
+- Smart tab search with multi-word matching
 - Pin protection (never close important tabs)
 - One-click cleanup wizard
 - Focus mode (filter by window)
@@ -50,53 +61,79 @@ Dark & light themes. Smooth animations. Every pixel intentional.
 ### 👑 Pro (One-time purchase)
 Everything in Free, plus:
 
-**Memory Intelligence**
-- Smart auto-suspension (save RAM automatically)
-- Memory dashboard with visual charts
-- Suspension exception whitelist
-- Automation rules engine (10 custom rules)
+**Tier 1 — Major Differentiators**
+- 🎬 **Test Session Recorder** — Record sessions, export to JSON
+- 🌐 **Environment Switcher** — One-click dev/staging/prod
+- 🎨 **Project Workspaces** — Emoji icons, color coding
+- ⚙️ **Automation Rules** — 10 custom rules
+- 📊 **Memory Dashboard** — Visual RAM insights
+- 💤 **Smart Auto-Suspension** — Save RAM automatically
 
-**Session Management**
-- Tab workspaces (save/restore collections)
-- Time Machine (30-day closed tab history)
-- Quick notes on any tab
-- Tab reminders with notifications
-- Tab expiry warnings
+**Tier 2 — Retention Features**
+- 📝 Quick Tab Notes
+- ⏰ Tab Reminders with notifications
+- ⏪ Tab Time Machine (30-day history)
+- 🛡️ Suspension Exceptions
+- 📂 Tab Auto-Grouping (Chrome)
 
-**Developer Tools**
-- Project workspaces with emoji/color
-- Environment switcher (dev/staging/prod)
-- Test session recorder (export to JSON)
-- Tab auto-grouping (Chrome)
+**Tier 3 — Core Improvements**
+- 🧠 Smart Duplicate Detection
+- 📅 Tab Expiry warnings
+- 📁 Basic Tab Workspaces
 
 ---
 
-## Key Features (Bullet points for listing)
+## Key Features (Bullet points)
 
-✅ **Smart Search** — Find any tab instantly with multi-word search
-✅ **Memory Badges** — See RAM usage per tab at a glance  
-✅ **Auto-Suspend** — Sleep idle tabs automatically to free memory
-✅ **Duplicate Detection** — Find and merge duplicate tabs (ignores tracking params)
-✅ **Workspaces** — Save and restore tab collections
-✅ **Time Machine** — 30-day history of closed tabs
-✅ **Focus Mode** — Show only current window tabs
+✅ **Test Session Recorder** — Record QA sessions, export to JSON
+✅ **Environment Switcher** — dev/staging/prod in one click
+✅ **Project Workspaces** — Organize with emoji & colors
+✅ **Automation Rules** — Sleep, close, notify on conditions
+✅ **Memory Dashboard** — Visual RAM usage insights
+✅ **Smart Auto-Suspend** — Free memory automatically
+✅ **Time Machine** — 30-day closed tab history
 ✅ **Quick Notes** — Attach notes to any tab
-✅ **Reminders** — Get notified to revisit important tabs
-✅ **Automation** — Create rules to manage tabs automatically
-✅ **10 Languages** — English, Hindi, Tamil, Spanish, French, German, Portuguese, Japanese, Chinese, Arabic
-✅ **Privacy First** — 100% local, no tracking, no accounts
+✅ **Tab Reminders** — Browser notifications
+✅ **Smart Search** — Multi-word matching
+✅ **10 Languages** — Global accessibility
+✅ **Privacy First** — 100% local, no tracking
 
 ---
 
 ## Pricing
 
-### Single Payment (Recommended)
+### Introductory Launch Pricing
 
-**~~$100~~ $49** — Lifetime Pro License
-- All Pro features forever
-- All future updates included
+| Plan | Price | Notes |
+|------|-------|-------|
+| **Pro Monthly** | ₹199/month | Cancel anytime |
+| **Pro Annual** | ₹999/year | Save 58% |
+| **Pro Lifetime** | ₹2,999 | *Introductory — regular ₹3,999* |
+
+**Lifetime includes:**
+- All 14 Pro features forever
+- All future updates
 - No subscription, no recurring fees
-- Instant license key delivery
+- 30-day money-back guarantee
+
+---
+
+## Lemon Squeezy Product Settings
+
+**Product Type**: Digital Download / Software License  
+**Delivery**: License key via email  
+**Tax Category**: Software  
+**Refund Policy**: 30 days  
+
+**License Settings:**
+- License length: **Unlimited** (lifetime)
+- Activation limit: **5 devices**
+- Generate license keys: **Yes**
+
+**Variants:**
+1. Pro Monthly — ₹199/month (subscription)
+2. Pro Annual — ₹999/year (subscription)
+3. Pro Lifetime — ₹2,999 one-time
 
 ---
 
@@ -104,20 +141,18 @@ Everything in Free, plus:
 
 1. **main-panel-dark.png** — Hero image showing main interface
 2. **main-panel-light.png** — Light theme variant
-3. **search-feature.png** — Search in action
+3. **memory-dashboard.png** — Pro memory dashboard
 4. **cleanup-panel.png** — One-click cleanup
-5. **memory-dashboard.png** — Pro memory dashboard
-6. **focus-mode.png** — Focus mode active
 
 ---
 
 ## FAQ
 
 **Q: Does bTab Sync collect my browsing data?**
-A: No. Everything stays 100% local on your device. We don't have servers, accounts, or any way to access your data.
+A: No. Everything stays 100% local on your device. We don't have servers or any way to access your data.
 
 **Q: Will it slow down my browser?**
-A: No. bTab Sync uses minimal resources and only activates when you open the panel. The auto-suspend feature actually makes your browser faster by sleeping idle tabs.
+A: No. bTab Sync uses minimal resources. The auto-suspend feature actually makes your browser faster.
 
 **Q: Does it work with Firefox?**
 A: Yes! Chrome (MV3) and Firefox (MV2) are both supported.
@@ -129,52 +164,10 @@ A: 30-day money-back guarantee, no questions asked.
 A: Yes, lifetime updates are included with your purchase.
 
 **Q: Can I use it on multiple computers?**
-A: Yes, your license works on all your personal devices.
+A: Yes, your license works on up to 5 devices.
 
----
-
-## Social Proof (Add after launch)
-
-> "Finally, a tab manager that doesn't feel like bloatware." — Developer, 200+ tabs daily
-
-> "The memory dashboard alone is worth the price." — Researcher
-
-> "I've tried OneTab, Workona, Tab Suspender... bTab is the one that stuck." — Power user
-
----
-
-## Technical Details
-
-- **Version**: 2.0.0
-- **Size**: ~700KB
-- **Permissions**: tabs, storage (minimal, privacy-focused)
-- **Browsers**: Chrome 88+, Firefox 78+
-- **Languages**: 10 (EN, HI, TA, ES, FR, DE, PT-BR, JA, ZH-CN, AR)
-
----
-
-## Call to Action
-
-**Get bTab Sync Pro — $9 one-time**
-
-→ Instant license key delivery
-→ Works on Chrome & Firefox  
-→ Lifetime updates included
-→ 30-day money-back guarantee
-
----
-
-## Store Settings
-
-**Product Type**: Digital Download / Software License
-**Delivery**: License key via email
-**Tax Category**: Software
-**Refund Policy**: 30 days
-
-**Variants** (if using tiered pricing):
-1. Pro License — $9
-2. Pro + Priority Support — $19
-3. Team License (5 seats) — $29
+**Q: Why "Sync" if it's local?**
+A: Optional Google Drive backup stores data in YOUR Drive. We never see it. Your tabs, your data, your cloud.
 
 ---
 
@@ -190,62 +183,63 @@ Thanks for purchasing bTab Sync Pro!
 
 **How to activate:**
 1. Install bTab Sync from Chrome Web Store / Firefox Add-ons
-2. Open the extension (Ctrl+Shift+K)
-3. Click Settings (gear icon)
-4. Paste your license key
+2. Click the toolbar icon to open the extension
+3. Click Settings (gear icon in footer)
+4. Paste your license key in the Upgrade tab
+
+Your license works on up to 5 devices.
 
 Questions? Reply to this email.
 
-Happy tab managing! 🚀
+Happy browser productivity! 🚀
 
 ---
 
-### Refund Processed
+## Marketing Copy
 
-Subject: bTab Sync Pro — Refund Processed
+**Hero tagline:**
+> Take control of your browser. Your entire workflow, organized in one place.
 
-Your refund has been processed. You should see it in 5-10 business days.
+**For developers:**
+> Stop drowning in tabs. Start shipping features.
 
-We'd love to know what we could improve. Reply with any feedback!
+**Social proof (add after launch):**
+> "Finally, a tab manager built for how developers actually work." — Frontend Engineer
+
+> "The test session recorder alone is worth the price." — QA Lead
+
+> "I've tried OneTab, Workona, The Great Suspender... bTab is the one that stuck." — Power user
 
 ---
 
-## Marketing Copy Variants
+## Competitive Positioning
 
-**For Twitter/X:**
-Finally shipped bTab Sync Pro 🚀
+**Don't compete on feature count. Compete on:**
+- Developer-focused productivity
+- Memory optimization
+- Powerful automation
+- Privacy-first architecture
+- Cross-browser availability
+- One-time purchase option
 
-The tab manager I always wanted:
-• Ctrl+Shift+K opens command center
-• Memory badges show RAM per tab
-• Auto-sleep idle tabs
-• Smart duplicate detection
-• 100% local, no tracking
+**Competitor prices:**
+- Tabox Pro: $5.99/mo or $59.99/yr
+- Workona Pro: $4/mo (no lifetime option)
+- bTab Sync Pro: ₹2,999 lifetime (~$36 USD)
 
-$9 one-time. Link in bio.
+---
 
-**For Product Hunt:**
-bTab Sync — Browser intelligence, not just tab management
+## Revenue Validation Target
 
-We built the tab manager we always wanted: keyboard-first, privacy-focused, and actually useful for power users with 50+ tabs.
+**First milestone: 30 paying customers**
 
-Free tier has smart search, cleanup, focus mode.
-Pro ($9 one-time) adds auto-suspend, workspaces, time machine, and more.
+| Metric | Target |
+|--------|--------|
+| Installs | 1,000 |
+| Weekly active users | 500 |
+| Pro conversion | 3% |
+| Paying customers | 30 |
+| Lifetime price | ₹2,999 |
+| Gross revenue | ₹89,970 |
 
-No accounts. No sync servers. Your tabs, your data.
-
-**For Reddit (r/chrome, r/firefox, r/productivity):**
-[Show HN style] I built a tab manager for people who don't close tabs
-
-After years of having 100+ tabs open, I built bTab Sync.
-
-- Ctrl+Shift+K to open
-- Multi-word search finds any tab
-- Memory badges show RAM usage
-- Auto-sleeps idle tabs (configurable)
-- Workspaces to save/restore tab collections
-- 100% local, no tracking
-
-Free tier is genuinely useful. Pro is $9 one-time.
-
-Chrome & Firefox. AMA!
+If 30 people willingly pay, the business model is validated. Scale from there.
