@@ -33,7 +33,7 @@ Take control of your browser. Your entire workflow, organized in one place.
 </p>
 
 <p align="center">
-  <a href="https://btab.lemonsqueezy.com/buy/btab-sync-pro">
+  <a href="https://btab-sync.lemonsqueezy.com/checkout/buy/2742cd45-08b6-4c41-bcde-13613e116565">
     <img src="https://img.shields.io/badge/Buy_Pro-₹2,999_Lifetime-1dd9b4?style=for-the-badge" alt="Buy Pro">
   </a>
 </p>
@@ -219,7 +219,7 @@ npm run build
 | **Pro Lifetime** | ₹2,999 | All 14 Pro features forever *(introductory)* |
 
 <p align="center">
-  <a href="https://btab.lemonsqueezy.com/buy/btab-sync-pro"><strong>🚀 Get Pro — ₹2,999 Lifetime</strong></a>
+  <a href="https://btab-sync.lemonsqueezy.com/checkout/buy/2742cd45-08b6-4c41-bcde-13613e116565"><strong>🚀 Get Pro — ₹2,999 Lifetime</strong></a>
 </p>
 
 30-day money-back guarantee. No questions asked.

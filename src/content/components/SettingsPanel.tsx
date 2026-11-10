@@ -858,7 +858,7 @@ function LicenseTab({ isDark, isPro }: LicenseTabProps): React.JSX.Element {
 
           <div className={cn('text-center text-[10px]', isDark ? 'text-[#4e5578]' : 'text-[#8890ab]')}>
             <a 
-              href="https://btabsync.lemonsqueezy.com" 
+              href="https://btab-sync.lemonsqueezy.com/checkout/buy/2742cd45-08b6-4c41-bcde-13613e116565" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-[#1dd9b4] hover:underline"
