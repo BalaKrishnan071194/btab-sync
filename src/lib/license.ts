@@ -380,18 +380,8 @@ export async function activateLicense(licenseKey: string): Promise<{
 export async function validateLicense(): Promise<boolean> {
   const stored = await getStoredLicense();
 
-  // No license stored - check if dev mode is enabled
+  // No license stored
   if (!stored) {
-    // Check for dev mode flag (for testing/development)
-    try {
-      const result = await ext.storage.local.get('btab_dev_pro');
-      if (result['btab_dev_pro'] === true) {
-        await setProStatus(true);
-        return true;
-      }
-    } catch {
-      // Ignore errors
-    }
     await setProStatus(false);
     return false;
   }
@@ -521,29 +511,4 @@ export function formatExpiryDate(expiresAt: number | null): string {
   if (diffDays <= 30) return `Expires in ${diffDays} days`;
   
   return `Expires ${date.toLocaleDateString()}`;
-}
-
-/**
- * Enable/disable development Pro mode (no license required)
- * For testing and development purposes only
- */
-export async function setDevProMode(enabled: boolean): Promise<void> {
-  try {
-    await ext.storage.local.set({ btab_dev_pro: enabled, isPro: enabled });
-    console.log(`[bTab License] Dev Pro mode ${enabled ? 'enabled' : 'disabled'}`);
-  } catch (e) {
-    console.warn('[bTab License] Failed to set dev Pro mode:', e);
-  }
-}
-
-/**
- * Check if dev Pro mode is enabled
- */
-export async function isDevProMode(): Promise<boolean> {
-  try {
-    const result = await ext.storage.local.get('btab_dev_pro');
-    return result['btab_dev_pro'] === true;
-  } catch {
-    return false;
-  }
 }
