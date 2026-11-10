@@ -14,19 +14,32 @@ A premium, local-first, cross-browser extension for power users who manage many 
 ## 📸 Screenshots
 
 <p align="center">
-  <img src="docs/screenshots/main-panel-dark.png" alt="bTab Sync Main Panel" width="400">
+  <img src="docs/screenshots/main-panel-dark.png" alt="bTab Sync Main Panel - Dark Theme" width="400">
 </p>
 
 <p align="center">
   <em>Clean, elegant tab management panel with memory badges and status indicators</em>
 </p>
 
-### Search & Focus Mode
+### Dark & Light Themes
 
-| Smart Search | Focus Mode |
+| Dark Theme | Light Theme |
 |:---:|:---:|
-| ![Search](docs/screenshots/search-feature.png) | ![Focus](docs/screenshots/focus-mode.png) |
-| Multi-word search with highlighting | Filter to current window tabs |
+| ![Dark](docs/screenshots/main-panel-dark.png) | ![Light](docs/screenshots/main-panel-light.png) |
+
+### Features in Action
+
+| Smart Search | Focus Mode | Cleanup Panel |
+|:---:|:---:|:---:|
+| ![Search](docs/screenshots/search-feature.png) | ![Focus](docs/screenshots/focus-mode.png) | ![Cleanup](docs/screenshots/cleanup-panel.png) |
+| Multi-word search with highlighting | Filter to current window | One-click browser optimization |
+
+### Pro Features
+
+| Memory Dashboard |
+|:---:|
+| ![Memory](docs/screenshots/memory-dashboard.png) |
+| Visual memory usage with top tabs ranked |
 
 ---
 

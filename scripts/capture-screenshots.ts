@@ -133,6 +133,78 @@ async function captureScreenshots(): Promise<void> {
     });
     console.log('  ✓ focus-mode.png');
 
+    // Clear and reopen
+    await mainPage.keyboard.press('Escape');
+    await delay(300);
+    await mainPage.keyboard.press('Control+Shift+K');
+    await delay(1000);
+
+    // Screenshot 4: Click cleanup button (broom icon in header)
+    console.log('📸 Capturing: cleanup-panel.png');
+    // Try to click cleanup button via shadow DOM
+    await mainPage.evaluate(() => {
+      const host = document.querySelector('#omni-switcher-host');
+      if (host && host.shadowRoot) {
+        const cleanupBtn = host.shadowRoot.querySelector('[title*="Cleanup"], [title*="cleanup"], button:has(svg)');
+        if (cleanupBtn) (cleanupBtn as HTMLElement).click();
+      }
+    });
+    await delay(1000);
+    await mainPage.screenshot({
+      path: path.join(SCREENSHOTS_DIR, 'cleanup-panel.png'),
+      clip: {
+        x: 800,
+        y: 0,
+        width: 500,
+        height: 700,
+      },
+    });
+    console.log('  ✓ cleanup-panel.png');
+
+    // Screenshot 5: Toggle to light theme
+    console.log('📸 Capturing: main-panel-light.png');
+    // Click theme toggle button
+    await mainPage.evaluate(() => {
+      const host = document.querySelector('#omni-switcher-host');
+      if (host && host.shadowRoot) {
+        // Find and click theme toggle (sun/moon icon)
+        const themeBtn = host.shadowRoot.querySelector('[title*="theme"], [title*="Theme"], [title*="light"], [title*="dark"]');
+        if (themeBtn) (themeBtn as HTMLElement).click();
+      }
+    });
+    await delay(800);
+    await mainPage.screenshot({
+      path: path.join(SCREENSHOTS_DIR, 'main-panel-light.png'),
+      clip: {
+        x: 800,
+        y: 0,
+        width: 500,
+        height: 700,
+      },
+    });
+    console.log('  ✓ main-panel-light.png');
+
+    // Screenshot 6: Memory dashboard (click memory icon in footer)
+    console.log('📸 Capturing: memory-dashboard.png');
+    await mainPage.evaluate(() => {
+      const host = document.querySelector('#omni-switcher-host');
+      if (host && host.shadowRoot) {
+        const memoryBtn = host.shadowRoot.querySelector('[title*="Memory"], [title*="memory"]');
+        if (memoryBtn) (memoryBtn as HTMLElement).click();
+      }
+    });
+    await delay(1000);
+    await mainPage.screenshot({
+      path: path.join(SCREENSHOTS_DIR, 'memory-dashboard.png'),
+      clip: {
+        x: 800,
+        y: 0,
+        width: 500,
+        height: 700,
+      },
+    });
+    console.log('  ✓ memory-dashboard.png');
+
     console.log('\n✅ Screenshot capture complete!');
     console.log(`📁 Screenshots saved to: ${SCREENSHOTS_DIR}`);
 
