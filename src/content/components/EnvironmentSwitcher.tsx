@@ -13,6 +13,8 @@ import { Button } from '../ui/button';
 import { useSettings, useIsPro, isDarkTheme } from '../BTabContext';
 import { ext } from '@/lib/browsers';
 import { cn } from '../ui/cn';
+import { validateEnvironmentSwitch } from '@/lib/urlSecurity';
+import { TOAST_DURATION_MS } from '@/lib/constants';
 
 // ============================================================================
 // Types
@@ -156,16 +158,28 @@ export const EnvironmentSwitcher = memo(function EnvironmentSwitcher({
   );
   const currentEnv = matchingRule?.envs.find(env => currentUrl.includes(env.pattern));
 
-  // Switch to different environment
+  // Switch to different environment - SECURITY: Validate URL before opening
   const handleSwitchEnv = useCallback((envMapping: EnvironmentMapping) => {
     if (!currentEnv || !matchingRule) return;
 
-    try {
-      const newUrl = currentUrl.replace(currentEnv.pattern, envMapping.pattern);
-      window.open(newUrl, '_blank', 'noopener,noreferrer');
-    } catch (e) {
-      console.warn('[bTab] Failed to switch environment:', e);
+    // Get all allowed patterns from this rule for whitelist validation
+    const allowedPatterns = matchingRule.envs.map(env => env.pattern);
+
+    // SECURITY: Validate the URL transformation against whitelist
+    const newUrl = validateEnvironmentSwitch(
+      currentUrl,
+      currentEnv.pattern,
+      envMapping.pattern,
+      allowedPatterns
+    );
+
+    if (!newUrl) {
+      setToastMessage('⚠️ Invalid URL blocked');
+      setTimeout(() => setToastMessage(null), TOAST_DURATION_MS);
+      return;
     }
+
+    window.open(newUrl, '_blank', 'noopener,noreferrer');
   }, [currentUrl, currentEnv, matchingRule]);
 
   if (!isOpen) return <></>;

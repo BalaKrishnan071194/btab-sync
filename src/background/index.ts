@@ -7,6 +7,7 @@
 
 import { ext } from '../lib/browsers';
 import { validateLicense } from '../lib/license';
+import { isValidUrl } from '../lib/urlSecurity';
 
 // ============================================================================
 // Type Definitions
@@ -971,9 +972,17 @@ chrome.commands.onCommand.addListener(async (command) => {
 ext.runtime.onMessage.addListener(
   (
     msg: unknown,
-    _sender: chrome.runtime.MessageSender,
+    sender: chrome.runtime.MessageSender,
     sendResponse: (response?: unknown) => void
   ): boolean | void => {
+    // SECURITY: Validate sender is from our extension
+    // This prevents other extensions or malicious scripts from manipulating tabs
+    if (!sender.id || sender.id !== chrome.runtime.id) {
+      console.warn('[bTab Security] Rejected message from unauthorized sender:', sender.id);
+      sendResponse({ success: false, error: 'Unauthorized' } as TabActionResponse);
+      return true;
+    }
+
     const message = msg as BackgroundMessage;
 
     // Popup requests tab data
@@ -1042,8 +1051,17 @@ ext.runtime.onMessage.addListener(
     }
 
     // Create new tab - for workspace restore
+    // SECURITY: Validate URL before creating tab to prevent javascript:/data: URLs
     if (message.action === 'createTab') {
       const msg = message as CreateTabMessage;
+      
+      // SECURITY: Validate URL protocol before creating tab
+      if (!isValidUrl(msg.url)) {
+        console.warn('[bTab Security] Blocked unsafe URL in createTab:', msg.url?.substring(0, 50));
+        sendResponse({ success: false, error: 'Blocked unsafe URL' } as TabActionResponse);
+        return true;
+      }
+      
       ext.tabs
         .create({
           url: msg.url,

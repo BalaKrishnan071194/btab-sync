@@ -7,9 +7,20 @@
  * - Periodic re-validation (every 24 hours)
  * - 7-day offline grace period
  * - Secure local storage of license state
+ * - Integrity checks to detect tampering
+ * - Rate limiting to prevent brute force attacks
  */
 
 import { ext } from '@/lib/browsers';
+import {
+  LEMONSQUEEZY_API_URL,
+  STORAGE_KEY_LICENSE,
+  STORAGE_KEY_IS_PRO,
+  LICENSE_VALIDATE_INTERVAL_MS,
+  LICENSE_GRACE_PERIOD_MS,
+  LICENSE_ACTIVATION_MIN_INTERVAL_MS,
+  LICENSE_ACTIVATION_MAX_ATTEMPTS_PER_HOUR,
+} from '@/lib/constants';
 
 // ============================================================================
 // Types
@@ -57,18 +68,59 @@ interface StoredLicense {
   lastValidatedAt: number;
   expiresAt: number | null;
   deviceFingerprint: string;
+  integrity: string; // SECURITY: Hash to detect tampering
 }
 
 // ============================================================================
 // Constants
 // ============================================================================
 
-const STORAGE_KEY = 'btab_license';
-const VALIDATE_INTERVAL_MS = 24 * 60 * 60 * 1000; // 24 hours
-const GRACE_PERIOD_MS = 7 * 24 * 60 * 60 * 1000; // 7 days offline grace
+const STORAGE_KEY = STORAGE_KEY_LICENSE;
+const VALIDATE_INTERVAL_MS = LICENSE_VALIDATE_INTERVAL_MS;
+const GRACE_PERIOD_MS = LICENSE_GRACE_PERIOD_MS;
 
 // LemonSqueezy API endpoint
-const LEMONSQUEEZY_API = 'https://api.lemonsqueezy.com/v1/licenses';
+const LEMONSQUEEZY_API = LEMONSQUEEZY_API_URL;
+
+// ============================================================================
+// Rate Limiting State
+// ============================================================================
+
+let lastActivationAttempt = 0;
+let activationAttemptCount = 0;
+let attemptCountResetTimeout: ReturnType<typeof setTimeout> | null = null;
+
+// ============================================================================
+// Integrity Helpers (SECURITY)
+// ============================================================================
+
+/**
+ * Generate an integrity hash for stored license data.
+ * This helps detect if someone manually modified the storage.
+ * Note: This is NOT cryptographically secure - it's a deterrent, not protection.
+ * SECURITY: Include ALL security-relevant fields to prevent partial modification attacks.
+ */
+function generateIntegrity(data: Omit<StoredLicense, 'integrity'>): string {
+  // Include ALL security-relevant fields to prevent partial modifications
+  const payload = `${data.key}|${data.instanceId}|${data.email}|${data.status}|${data.activatedAt}|${data.lastValidatedAt}|${data.expiresAt}|${data.deviceFingerprint}`;
+  let hash = 0;
+  for (let i = 0; i < payload.length; i++) {
+    const char = payload.charCodeAt(i);
+    hash = ((hash << 5) - hash) + char;
+    hash = hash & hash; // Convert to 32-bit integer
+  }
+  // Convert to base36 and combine with length check
+  return `${Math.abs(hash).toString(36)}_${payload.length.toString(36)}`;
+}
+
+/**
+ * Verify the integrity of stored license data.
+ */
+function verifyIntegrity(stored: StoredLicense): boolean {
+  const { integrity, ...data } = stored;
+  const expected = generateIntegrity(data);
+  return integrity === expected;
+}
 
 // ============================================================================
 // Device Fingerprinting
@@ -150,7 +202,17 @@ async function getStoredLicense(): Promise<StoredLicense | null> {
     const result = await ext.storage.local.get(STORAGE_KEY);
     const stored = result[STORAGE_KEY];
     if (stored && typeof stored === 'object' && 'key' in stored) {
-      return stored as StoredLicense;
+      const license = stored as StoredLicense;
+      
+      // SECURITY: Verify integrity hash to detect tampering
+      if (!verifyIntegrity(license)) {
+        console.warn('[bTab License] Integrity check failed - license may be tampered');
+        await setStoredLicense(null);
+        await setProStatus(false);
+        return null;
+      }
+      
+      return license;
     }
     return null;
   } catch (e) {
@@ -159,10 +221,15 @@ async function getStoredLicense(): Promise<StoredLicense | null> {
   }
 }
 
-async function setStoredLicense(license: StoredLicense | null): Promise<void> {
+async function setStoredLicense(license: Omit<StoredLicense, 'integrity'> | null): Promise<void> {
   try {
     if (license) {
-      await ext.storage.local.set({ [STORAGE_KEY]: license });
+      // SECURITY: Add integrity hash before storing
+      const withIntegrity: StoredLicense = {
+        ...license,
+        integrity: generateIntegrity(license),
+      };
+      await ext.storage.local.set({ [STORAGE_KEY]: withIntegrity });
     } else {
       await ext.storage.local.remove(STORAGE_KEY);
     }
@@ -310,12 +377,37 @@ async function callLemonSqueezyDeactivate(
 
 /**
  * Activate a new license key
+ * SECURITY: Includes rate limiting to prevent brute force attacks
  */
 export async function activateLicense(licenseKey: string): Promise<{
   success: boolean;
   error?: string;
   license?: LicenseInfo;
 }> {
+  const now = Date.now();
+
+  // SECURITY: Rate limiting - prevent rapid successive attempts
+  if (now - lastActivationAttempt < LICENSE_ACTIVATION_MIN_INTERVAL_MS) {
+    return { success: false, error: 'Please wait a few seconds before trying again' };
+  }
+
+  // SECURITY: Hourly attempt limit
+  if (activationAttemptCount >= LICENSE_ACTIVATION_MAX_ATTEMPTS_PER_HOUR) {
+    return { success: false, error: 'Too many attempts. Please try again in an hour.' };
+  }
+
+  // Track this attempt
+  lastActivationAttempt = now;
+  activationAttemptCount++;
+
+  // Reset attempt count after an hour
+  if (attemptCountResetTimeout) {
+    clearTimeout(attemptCountResetTimeout);
+  }
+  attemptCountResetTimeout = setTimeout(() => {
+    activationAttemptCount = Math.max(0, activationAttemptCount - 1);
+  }, 60 * 60 * 1000); // 1 hour
+
   // Normalize key format
   const key = licenseKey.trim().toUpperCase();
   
@@ -339,18 +431,18 @@ export async function activateLicense(licenseKey: string): Promise<{
   }
 
   // Store license locally
-  const now = Date.now();
+  const activationTime = Date.now();
   const expiresAt = result.license_key.expires_at 
     ? new Date(result.license_key.expires_at).getTime() 
     : null;
 
-  const stored: StoredLicense = {
+  const stored: Omit<StoredLicense, 'integrity'> = {
     key: result.license_key.key,
     instanceId: result.instance.id,
     email: result.meta?.customer_email || '',
     status: result.license_key.status === 'active' ? 'active' : 'expired',
-    activatedAt: now,
-    lastValidatedAt: now,
+    activatedAt: activationTime,
+    lastValidatedAt: activationTime,
     expiresAt,
     deviceFingerprint,
   };
@@ -405,11 +497,13 @@ export async function validateLicense(): Promise<boolean> {
   const result = await callLemonSqueezyValidate(stored.key, stored.instanceId);
 
   if (result.valid && result.license_key) {
-    // Update last validated timestamp
-    const updated: StoredLicense = {
-      ...stored,
+    // Update last validated timestamp (exclude integrity for setStoredLicense)
+    const { integrity: _integrity, ...storedData } = stored;
+    const newStatus: 'active' | 'expired' = result.license_key.status === 'active' ? 'active' : 'expired';
+    const updated: Omit<StoredLicense, 'integrity'> = {
+      ...storedData,
       lastValidatedAt: now,
-      status: result.license_key.status === 'active' ? 'active' : 'expired',
+      status: newStatus,
       expiresAt: result.license_key.expires_at 
         ? new Date(result.license_key.expires_at).getTime() 
         : stored.expiresAt,

@@ -21,6 +21,9 @@
   "host_permissions": [
     "<all_urls>"
   ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; connect-src 'self' https://api.lemonsqueezy.com"
+  },
   "background": {
     "service_worker": "src/background/index.ts",
     "type": "module"

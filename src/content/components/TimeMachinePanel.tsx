@@ -18,6 +18,8 @@ import type { TabHistoryEntry } from '@/lib/db';
 import { getTabHistory, searchTabHistory, clearTabHistory } from '@/lib/db';
 import { ext } from '@/lib/browsers';
 import { cn } from '../ui/cn';
+import { safeOpenUrl } from '@/lib/urlSecurity';
+import { TOAST_DURATION_MS } from '@/lib/constants';
 
 // ============================================================================
 // Types
@@ -343,12 +345,16 @@ export const TimeMachinePanel = memo(function TimeMachinePanel({
   // Group by date
   const dateGroups = useMemo(() => groupByDate(history), [history]);
 
-  // Restore tab
+  // Restore tab - SECURITY: Validate URL before opening
   const handleRestore = useCallback(async (entry: TabHistoryEntry) => {
     try {
-      window.open(entry.url, '_blank', 'noopener,noreferrer');
+      if (!safeOpenUrl(entry.url)) {
+        setToastMessage('⚠️ Invalid URL blocked');
+        setTimeout(() => setToastMessage(null), TOAST_DURATION_MS);
+        return;
+      }
       setToastMessage('✨ Tab restored');
-      setTimeout(() => setToastMessage(null), 2000);
+      setTimeout(() => setToastMessage(null), TOAST_DURATION_MS);
     } catch (e) {
       console.warn('[bTab] Failed to restore tab:', e);
     }

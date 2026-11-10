@@ -181,21 +181,54 @@ function initialize(): void {
 
 /**
  * Handles messages from the background script.
+ * SECURITY: Validates sender and payload structure before processing.
  */
 function handleMessage(
   message: unknown,
-  _sender: chrome.runtime.MessageSender,
+  sender: chrome.runtime.MessageSender,
   _sendResponse: (response?: unknown) => void
 ): boolean | void {
-  const msg = message as ToggleOverlayMessage;
+  // SECURITY: Only accept messages from our extension's background script
+  if (!sender.id || sender.id !== chrome.runtime.id) {
+    console.warn('[bTab Security] Rejected message from unauthorized sender');
+    return;
+  }
 
-  if (msg.action === 'toggleOmniOverlay' && msg.payload) {
-    state.currentPayload = msg.payload;
+  const msg = message as ToggleOverlayMessage | { action: string; payload?: TabPayload };
+
+  if (msg.action === 'toggleOmniOverlay') {
+    const payload = (msg as ToggleOverlayMessage).payload;
+    
+    // SECURITY: Validate payload structure
+    if (!payload || !Array.isArray(payload.tabs)) {
+      console.warn('[bTab Security] Invalid payload structure rejected');
+      return;
+    }
+
+    state.currentPayload = payload;
 
     // Re-render with new payload
     if (state.reactRoot && state.shadowRoot) {
       state.reactRoot.unmount();
-      state.reactRoot = mountReactApp(state.shadowRoot, msg.payload);
+      state.reactRoot = mountReactApp(state.shadowRoot, payload);
+    }
+  }
+
+  // Handle real-time tab change updates
+  if (msg.action === 'tabsChanged' && msg.payload) {
+    const payload = msg.payload;
+    
+    // SECURITY: Validate payload structure
+    if (!payload || !Array.isArray(payload.tabs)) {
+      return;
+    }
+
+    state.currentPayload = payload;
+
+    // Re-render with new payload
+    if (state.reactRoot && state.shadowRoot) {
+      state.reactRoot.unmount();
+      state.reactRoot = mountReactApp(state.shadowRoot, payload);
     }
   }
 }

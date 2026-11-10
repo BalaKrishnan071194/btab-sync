@@ -12,6 +12,7 @@ import { Button } from '../ui/button';
 import { useSettings, useIsPro, isDarkTheme } from '../BTabContext';
 import { ext } from '@/lib/browsers';
 import { cn } from '../ui/cn';
+import { BTAB_CHECKOUT_URL } from '@/lib/constants';
 
 // ============================================================================
 // Types
@@ -36,7 +37,7 @@ interface ProGateProps {
 // Constants
 // ============================================================================
 
-const UPGRADE_URL = 'https://btab-sync.lemonsqueezy.com/checkout/buy/2742cd45-08b6-4c41-bcde-13613e116565';
+const UPGRADE_URL = BTAB_CHECKOUT_URL;
 
 // ============================================================================
 // Component

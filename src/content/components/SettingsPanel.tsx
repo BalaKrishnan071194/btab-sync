@@ -21,6 +21,7 @@ import {
   formatExpiryDate,
   type LicenseInfo 
 } from '@/lib/license';
+import { BTAB_CHECKOUT_URL } from '@/lib/constants';
 
 // ============================================================================
 // Types
@@ -858,13 +859,13 @@ function LicenseTab({ isDark, isPro }: LicenseTabProps): React.JSX.Element {
 
           <div className={cn('text-center text-[10px]', isDark ? 'text-[#4e5578]' : 'text-[#8890ab]')}>
             <a 
-              href="https://btab-sync.lemonsqueezy.com/checkout/buy/2742cd45-08b6-4c41-bcde-13613e116565" 
+              href={BTAB_CHECKOUT_URL} 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-[#1dd9b4] hover:underline cursor-pointer"
               onClick={(e) => {
                 e.preventDefault();
-                window.open('https://btab-sync.lemonsqueezy.com/checkout/buy/2742cd45-08b6-4c41-bcde-13613e116565', '_blank', 'noopener,noreferrer');
+                window.open(BTAB_CHECKOUT_URL, '_blank', 'noopener,noreferrer');
               }}
             >
               Get a license key →
