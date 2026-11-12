@@ -1,0 +1,18 @@
+﻿<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1d2e"/>
+      <stop offset="100%" style="stop-color:#0f1223"/>
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#89b4fa"/>
+      <stop offset="100%" style="stop-color:#1dd9b4"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background rounded square -->
+  <rect x="4" y="4" width="120" height="120" rx="24" fill="url(#bgGrad)" stroke="#1dd9b4" stroke-width="2" stroke-opacity="0.3"/>
+  
+  <!-- bT text -->
+  <text x="64" y="88" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" font-size="64" font-weight="800" fill="url(#textGrad)" text-anchor="middle" letter-spacing="-3">bT</text>
+</svg>
