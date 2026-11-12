@@ -657,6 +657,65 @@
     .roadmap-link a:hover {
       text-decoration: underline;
     }
+
+    /* Screenshots Gallery */
+    .screenshots {
+      padding: 6rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .screenshots-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .screenshot-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+
+    .screenshot-card:hover {
+      border-color: var(--teal);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(29, 217, 180, 0.15);
+    }
+
+    .screenshot-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .screenshot-caption {
+      padding: 1.25rem 1.5rem;
+      background: var(--bg-light);
+    }
+
+    .screenshot-caption h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+
+    .screenshot-caption p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 768px) {
+      .screenshots-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
@@ -667,6 +726,7 @@
         <img src="btab-logo.png" alt="bTab" height="36" style="border-radius: 8px;">
       </a>
       <div class="nav-links">
+        <a href="#screenshots">Screenshots</a>
         <a href="#features">Features</a>
         <a href="#pricing">Pricing</a>
         <a href="#request">Request Feature</a>
@@ -710,6 +770,56 @@
     
     <div class="hero-image">
       <img src="screenshot.png" alt="bTab interface showing tab management panel" loading="lazy">
+    </div>
+  </section>
+
+  <!-- Screenshots Gallery -->
+  <section class="screenshots" id="screenshots">
+    <div class="section-header">
+      <h2>See it in action</h2>
+      <p>Explore bTab's powerful features through these screenshots</p>
+    </div>
+    
+    <div class="screenshots-grid">
+      <div class="screenshot-card">
+        <img src="screenshots/screenshot-1-features.png" alt="bTab main features - keyboard shortcut and tab management" loading="lazy">
+        <div class="screenshot-caption">
+          <h4>Keyboard-First Design</h4>
+          <p>Press Ctrl+Shift+K to open instantly. Fuzzy search, memory badges, and status pills.</p>
+        </div>
+      </div>
+      
+      <div class="screenshot-card">
+        <img src="screenshots/screenshot-2-search.png" alt="bTab smart search with highlighting" loading="lazy">
+        <div class="screenshot-caption">
+          <h4>Smart Multi-Word Search</h4>
+          <p>Type multiple words to filter tabs. Matched terms highlighted in teal.</p>
+        </div>
+      </div>
+      
+      <div class="screenshot-card">
+        <img src="screenshots/screenshot-3-memory.png" alt="bTab memory diagnostics" loading="lazy">
+        <div class="screenshot-caption">
+          <h4>Memory Diagnostics</h4>
+          <p>See which tabs consume the most memory. lo/md/hi badges at a glance.</p>
+        </div>
+      </div>
+      
+      <div class="screenshot-card">
+        <img src="screenshots/screenshot-4-cleanup.png" alt="bTab one-click cleanup" loading="lazy">
+        <div class="screenshot-caption">
+          <h4>One-Click Cleanup</h4>
+          <p>Remove duplicates, sleep idle tabs, close heavy tabs in one click.</p>
+        </div>
+      </div>
+      
+      <div class="screenshot-card">
+        <img src="screenshots/screenshot-5-pro.png" alt="bTab Pro features" loading="lazy">
+        <div class="screenshot-caption">
+          <h4>Pro Features</h4>
+          <p>Smart duplicates, auto-suspend, workspaces, time machine, and more.</p>
+        </div>
+      </div>
     </div>
   </section>
 
